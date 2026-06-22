@@ -170,8 +170,10 @@ textarea {
 
 .nav-cta:hover,
 .nav-cta:focus-visible {
-  color: white;
-  background: var(--ink);
+  color: var(--ink);
+  background: linear-gradient(180deg, #ffd96f, var(--gold));
+  border-color: var(--gold);
+  box-shadow: 0 12px 26px rgba(243, 196, 79, 0.3);
   transform: translateY(-1px);
 }
 
@@ -1104,10 +1106,99 @@ textarea {
   outline-offset: 3px;
 }
 
+@keyframes soft-rise {
+  from {
+    opacity: 0;
+    transform: translateY(18px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes soft-scale {
+  from {
+    opacity: 0;
+    transform: scale(0.985);
+  }
+
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+.hero-content,
+.page-hero > div,
+.section-heading,
+.trip-finder,
+.feature-band > *,
+.trust-strip div,
+.info-card,
+.tour-card,
+.destination-card,
+.style-grid article,
+.blog-grid article,
+.impact-list div,
+.about-stats div,
+.plan-form,
+.image-panel {
+  animation: soft-rise 680ms ease both;
+}
+
+.hero-media,
+.feature-image,
+.about-image {
+  animation: soft-scale 900ms ease both;
+}
+
+.trust-strip div:nth-child(2),
+.info-card:nth-child(2),
+.tour-card:nth-child(2),
+.destination-card:nth-child(2),
+.style-grid article:nth-child(2),
+.blog-grid article:nth-child(2),
+.impact-list div:nth-child(2),
+.about-stats div:nth-child(2) {
+  animation-delay: 80ms;
+}
+
+.trust-strip div:nth-child(3),
+.info-card:nth-child(3),
+.tour-card:nth-child(3),
+.destination-card:nth-child(3),
+.style-grid article:nth-child(3),
+.blog-grid article:nth-child(3),
+.impact-list div:nth-child(3),
+.about-stats div:nth-child(3) {
+  animation-delay: 150ms;
+}
+
+.tour-card:nth-child(4),
+.destination-card:nth-child(4),
+.style-grid article:nth-child(4),
+.blog-grid article:nth-child(4) {
+  animation-delay: 220ms;
+}
+
+.tour-card:nth-child(5),
+.style-grid article:nth-child(5),
+.blog-grid article:nth-child(5) {
+  animation-delay: 290ms;
+}
+
+.tour-card:nth-child(6),
+.blog-grid article:nth-child(6) {
+  animation-delay: 360ms;
+}
+
 @media (prefers-reduced-motion: reduce) {
   *,
   *::before,
   *::after {
+    animation: none !important;
     scroll-behavior: auto !important;
     transition-duration: 1ms !important;
   }
