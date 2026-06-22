@@ -1,4 +1,4 @@
-# Local Insight Ghana
+# Local Insights Ghana
 
 A static multi-page website prototype for a Ghana tour operator.
 

@@ -267,7 +267,7 @@ if (applyFilters) {
           `
         )
         .join("")
-    : `<p>No tours match those filters yet. Use the trip planner and Local Insight can create a custom Ghana experience.</p>`;
+    : `<p>No tours match those filters yet. Use the trip planner and Local Insights can create a custom Ghana experience.</p>`;
 
     document.querySelector("#tours")?.scrollIntoView({ behavior: "smooth", block: "start" });
   });
