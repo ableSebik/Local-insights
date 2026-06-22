@@ -97,8 +97,10 @@ textarea {
 
 .brand-logo {
   display: block;
-  width: clamp(156px, 17vw, 218px);
+  width: clamp(136px, 14vw, 180px);
+  max-height: 52px;
   height: auto;
+  object-fit: contain;
 }
 
 .brand strong,
@@ -1214,7 +1216,7 @@ textarea {
 
 .footer-logo {
   display: block;
-  width: min(210px, 70vw);
+  width: min(180px, 64vw);
   height: auto;
   margin-bottom: 14px;
   filter: drop-shadow(0 12px 28px rgba(0, 0, 0, 0.16));
@@ -1321,6 +1323,11 @@ textarea {
 @media (max-width: 560px) {
   .site-header {
     min-height: 68px;
+  }
+
+  .brand-logo {
+    width: 132px;
+    max-height: 44px;
   }
 
   .main-nav {
