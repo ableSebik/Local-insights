@@ -637,9 +637,15 @@ textarea {
 }
 
 .tour-card-image {
+  display: block;
+  width: 100%;
   min-height: 230px;
+  padding: 0;
+  border: 0;
+  appearance: none;
   background-position: center;
   background-size: cover;
+  cursor: pointer;
   transition: transform 260ms ease;
 }
 
@@ -650,6 +656,24 @@ textarea {
 
 .tour-card-body {
   padding: 20px;
+}
+
+.tour-title-button {
+  display: inline;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  color: inherit;
+  cursor: pointer;
+  font: inherit;
+  font-weight: inherit;
+  line-height: inherit;
+  text-align: left;
+}
+
+.tour-title-button:hover,
+.tour-title-button:focus-visible {
+  color: var(--green);
 }
 
 .tag-row,
@@ -1100,6 +1124,8 @@ textarea {
 .button:focus-visible,
 .filter:focus-visible,
 .text-link:focus-visible,
+.tour-card-action:focus-visible,
+.tour-title-button:focus-visible,
 .menu-toggle:focus-visible,
 .close-button:focus-visible {
   outline: 3px solid rgba(243, 196, 79, 0.72);

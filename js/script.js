@@ -220,14 +220,14 @@ function renderTours(filter = "all") {
     .map(
       (tour) => `
         <article class="tour-card" data-category="${tour.category}" data-region="${tour.region}" data-duration="${tour.durationGroup}">
-          <div class="tour-card-image" style="background-image:url('${tour.image}')"></div>
+          <button class="tour-card-image tour-card-action" type="button" style="background-image:url('${tour.image}')" data-tour-link="${tour.id}" aria-label="View ${tour.title} details"></button>
           <div class="tour-card-body">
             <div class="tag-row">
               <span>${titleCase(tour.category)}</span>
               <span>${tour.duration}</span>
               <span>${titleCase(tour.region)}</span>
             </div>
-            <h3>${tour.title}</h3>
+            <h3><button class="tour-title-button" type="button" data-tour-link="${tour.id}">${tour.title}</button></h3>
             <p>${tour.summary}</p>
             <div class="card-bottom">
               <span class="price">${tour.price}</span>
@@ -260,8 +260,41 @@ function openTour(id) {
     .map((item) => `<li>${item}</li>`)
     .join("");
   panel.querySelector("[data-detail-included]").textContent = tour.included;
+  const bookLink = panel.querySelector("[data-detail-book]");
+  if (bookLink) {
+    bookLink.href = `contact.html?tour=${encodeURIComponent(tour.id)}`;
+  }
   panel.classList.add("is-open");
   panel.setAttribute("aria-hidden", "false");
+}
+
+function getTourRequestText(tour) {
+  return `I am interested in the ${tour.title}.
+
+Tour details:
+- Duration: ${tour.duration}
+- Region: ${titleCase(tour.region)}
+- Style: ${tour.style}
+- Price: ${tour.price}
+
+Please help me plan this experience.`;
+}
+
+function prefillTourRequest() {
+  if (!planForm) return;
+  const selectedTourId = new URLSearchParams(window.location.search).get("tour");
+  if (!selectedTourId) return;
+
+  const selectedTour = tours.find((tour) => tour.id === selectedTourId);
+  if (!selectedTour) return;
+
+  const interests = planForm.querySelector('textarea[name="interests"]');
+  if (interests && !interests.value.trim()) {
+    interests.value = getTourRequestText(selectedTour);
+  }
+
+  const heading = document.querySelector(".plan-copy h2");
+  if (heading) heading.textContent = `Plan ${selectedTour.title}`;
 }
 
 function closeTour() {
@@ -309,14 +342,14 @@ if (applyFilters) {
         .map(
           (tour) => `
             <article class="tour-card">
-              <div class="tour-card-image" style="background-image:url('${tour.image}')"></div>
+              <button class="tour-card-image tour-card-action" type="button" style="background-image:url('${tour.image}')" data-tour-link="${tour.id}" aria-label="View ${tour.title} details"></button>
               <div class="tour-card-body">
                 <div class="tag-row">
                   <span>${titleCase(tour.category)}</span>
                   <span>${tour.duration}</span>
                   <span>${titleCase(tour.region)}</span>
                 </div>
-                <h3>${tour.title}</h3>
+                <h3><button class="tour-title-button" type="button" data-tour-link="${tour.id}">${tour.title}</button></h3>
                 <p>${tour.summary}</p>
                 <div class="card-bottom">
                   <span class="price">${tour.price}</span>
@@ -347,6 +380,8 @@ if (menuToggle && nav) {
 const planForm = document.querySelector(".plan-form");
 
 if (planForm) {
+  prefillTourRequest();
+
   planForm.addEventListener("submit", (event) => {
     event.preventDefault();
     const button = event.currentTarget.querySelector("button");
