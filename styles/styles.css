@@ -95,18 +95,10 @@ textarea {
   min-width: max-content;
 }
 
-.brand-mark {
-  display: grid;
-  width: 44px;
-  height: 44px;
-  place-items: center;
-  border-radius: 8px;
-  color: white;
-  background:
-    linear-gradient(135deg, rgba(243, 196, 79, 0.24), transparent 42%),
-    var(--green);
-  box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.18);
-  font-weight: 900;
+.brand-logo {
+  display: block;
+  width: clamp(156px, 17vw, 218px);
+  height: auto;
 }
 
 .brand strong,
@@ -1218,6 +1210,14 @@ textarea {
 .site-footer p {
   margin: 6px 0 0;
   color: rgba(255, 255, 255, 0.7);
+}
+
+.footer-logo {
+  display: block;
+  width: min(210px, 70vw);
+  height: auto;
+  margin-bottom: 14px;
+  filter: drop-shadow(0 12px 28px rgba(0, 0, 0, 0.16));
 }
 
 .site-footer nav {
