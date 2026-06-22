@@ -1130,67 +1130,43 @@ textarea {
   }
 }
 
-.hero-content,
-.page-hero > div,
-.section-heading,
-.trip-finder,
-.feature-band > *,
-.trust-strip div,
-.info-card,
-.tour-card,
-.destination-card,
-.style-grid article,
-.blog-grid article,
-.impact-list div,
-.about-stats div,
-.plan-form,
-.image-panel {
+.reveal-item {
+  opacity: 0;
+  transform: translateY(18px);
+  will-change: opacity, transform;
+}
+
+.reveal-item.reveal-in {
   animation: soft-rise 680ms ease both;
 }
 
-.hero-media,
-.feature-image,
-.about-image {
+.reveal-scale {
+  opacity: 0;
+  transform: scale(0.985);
+  will-change: opacity, transform;
+}
+
+.reveal-scale.reveal-in {
   animation: soft-scale 900ms ease both;
 }
 
-.trust-strip div:nth-child(2),
-.info-card:nth-child(2),
-.tour-card:nth-child(2),
-.destination-card:nth-child(2),
-.style-grid article:nth-child(2),
-.blog-grid article:nth-child(2),
-.impact-list div:nth-child(2),
-.about-stats div:nth-child(2) {
+.reveal-delay-1 {
   animation-delay: 80ms;
 }
 
-.trust-strip div:nth-child(3),
-.info-card:nth-child(3),
-.tour-card:nth-child(3),
-.destination-card:nth-child(3),
-.style-grid article:nth-child(3),
-.blog-grid article:nth-child(3),
-.impact-list div:nth-child(3),
-.about-stats div:nth-child(3) {
+.reveal-delay-2 {
   animation-delay: 150ms;
 }
 
-.tour-card:nth-child(4),
-.destination-card:nth-child(4),
-.style-grid article:nth-child(4),
-.blog-grid article:nth-child(4) {
+.reveal-delay-3 {
   animation-delay: 220ms;
 }
 
-.tour-card:nth-child(5),
-.style-grid article:nth-child(5),
-.blog-grid article:nth-child(5) {
+.reveal-delay-4 {
   animation-delay: 290ms;
 }
 
-.tour-card:nth-child(6),
-.blog-grid article:nth-child(6) {
+.reveal-delay-5 {
   animation-delay: 360ms;
 }
 

@@ -150,6 +150,64 @@ const panel = document.querySelector("[data-tour-panel]");
 const nav = document.querySelector("[data-nav]");
 const menuToggle = document.querySelector("[data-menu-toggle]");
 
+const revealSelectors = [
+  ".hero-content",
+  ".page-hero > div",
+  ".section-heading",
+  ".trip-finder",
+  ".feature-band > *",
+  ".trust-strip div",
+  ".info-card",
+  ".tour-card",
+  ".destination-card",
+  ".style-grid article",
+  ".blog-grid article",
+  ".impact-list div",
+  ".about-stats div",
+  ".plan-form",
+  ".image-panel",
+].join(",");
+
+const scaleRevealSelectors = [".hero-media", ".feature-image", ".about-image"].join(",");
+
+const revealObserver =
+  "IntersectionObserver" in window
+    ? new IntersectionObserver(
+        (entries, observer) => {
+          entries.forEach((entry) => {
+            if (!entry.isIntersecting) return;
+            entry.target.classList.add("reveal-in");
+            observer.unobserve(entry.target);
+          });
+        },
+        { rootMargin: "0px 0px -12% 0px", threshold: 0.12 }
+      )
+    : null;
+
+function prepareRevealItems(scope = document) {
+  const revealItems = Array.from(scope.querySelectorAll(revealSelectors));
+  const scaleItems = Array.from(scope.querySelectorAll(scaleRevealSelectors));
+
+  [...revealItems, ...scaleItems].forEach((element) => {
+    element.classList.toggle("reveal-scale", scaleItems.includes(element));
+    element.classList.toggle("reveal-item", !scaleItems.includes(element));
+
+    if (element.matches(".trust-strip div, .info-card, .tour-card, .destination-card, .style-grid article, .blog-grid article, .impact-list div, .about-stats div")) {
+      const siblings = Array.from(element.parentElement.children).filter((child) =>
+        child.matches(".trust-strip div, .info-card, .tour-card, .destination-card, .style-grid article, .blog-grid article, .impact-list div, .about-stats div")
+      );
+      const delay = Math.min(siblings.indexOf(element), 5);
+      if (delay > 0) element.classList.add(`reveal-delay-${delay}`);
+    }
+
+    if (revealObserver) {
+      revealObserver.observe(element);
+    } else {
+      element.classList.add("reveal-in");
+    }
+  });
+}
+
 function titleCase(value) {
   return value.replace(/-/g, " ").replace(/\b\w/g, (letter) => letter.toUpperCase());
 }
@@ -180,6 +238,8 @@ function renderTours(filter = "all") {
       `
     )
     .join("");
+
+  prepareRevealItems(grid);
 }
 
 function openTour(id) {
@@ -269,6 +329,7 @@ if (applyFilters) {
         .join("")
     : `<p>No tours match those filters yet. Use the trip planner and Local Insights can create a custom Ghana experience.</p>`;
 
+    prepareRevealItems(grid);
     document.querySelector("#tours")?.scrollIntoView({ behavior: "smooth", block: "start" });
   });
 }
@@ -298,4 +359,5 @@ document.addEventListener("keydown", (event) => {
   if (event.key === "Escape") closeTour();
 });
 
+prepareRevealItems();
 renderTours();
