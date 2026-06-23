@@ -1317,7 +1317,7 @@ textarea {
   overflow: hidden;
   border: 1px solid rgba(16, 88, 51, 0.16);
   border-radius: 8px;
-  background: #f2f7f4;
+  background: #efeae2;
   box-shadow: 0 24px 70px rgba(13, 24, 20, 0.22);
 }
 
@@ -1346,12 +1346,6 @@ textarea {
   font-size: 1.2rem;
 }
 
-.whatsapp-chat-header p {
-  margin: 4px 0 0;
-  color: rgba(255, 255, 255, 0.78);
-  font-size: 0.88rem;
-}
-
 .whatsapp-chat-close {
   width: 34px;
   height: 34px;
@@ -1366,15 +1360,14 @@ textarea {
 
 .whatsapp-chat-body {
   display: grid;
-  gap: 10px;
+  gap: 8px;
   padding: 18px;
   background:
-    linear-gradient(rgba(242, 247, 244, 0.94), rgba(242, 247, 244, 0.94)),
-    radial-gradient(circle at 20% 20%, rgba(37, 211, 102, 0.18), transparent 32%);
+    linear-gradient(rgba(239, 234, 226, 0.92), rgba(239, 234, 226, 0.92)),
+    radial-gradient(circle at 18% 18%, rgba(37, 211, 102, 0.08), transparent 30%);
 }
 
-.chat-bubble,
-.chat-prompt {
+.chat-bubble {
   max-width: 88%;
   padding: 11px 13px;
   border-radius: 8px;
@@ -1388,18 +1381,25 @@ textarea {
 }
 
 .chat-prompt {
-  justify-self: end;
-  border: 0;
-  color: #063f35;
-  background: #dcf8c6;
+  justify-self: start;
+  width: max-content;
+  max-width: 100%;
+  padding: 8px 11px;
+  border: 1px solid rgba(7, 94, 84, 0.16);
+  border-radius: 999px;
+  color: #075e54;
+  background: rgba(255, 255, 255, 0.86);
   cursor: pointer;
   text-align: left;
-  font-weight: 800;
+  font-size: 0.88rem;
+  font-weight: 600;
+  box-shadow: 0 5px 14px rgba(13, 24, 20, 0.06);
 }
 
 .chat-prompt:hover,
 .chat-prompt:focus-visible {
-  background: #c9f3ad;
+  border-color: rgba(7, 94, 84, 0.28);
+  background: white;
 }
 
 .whatsapp-chat-form {
