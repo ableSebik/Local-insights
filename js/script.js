@@ -480,7 +480,12 @@ document.addEventListener("click", (event) => {
   if (closeWhatsappButton) closeWhatsappChat();
 
   if (promptButton) {
-    openWhatsapp(promptButton.dataset.whatsappMessage);
+    const chat = document.querySelector("[data-whatsapp-chat]");
+    const input = chat?.querySelector('input[name="message"]');
+    if (input) {
+      input.value = promptButton.dataset.whatsappMessage;
+      input.focus();
+    }
   }
 });
 
