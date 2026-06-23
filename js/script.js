@@ -155,14 +155,12 @@ const revealSelectors = [
   ".page-hero > div",
   ".section-heading",
   ".trip-finder",
-  ".feature-band > *",
   ".process-grid article",
   ".trust-strip div",
   ".info-card",
   ".tour-preview",
   ".tour-card",
   ".destination-card",
-  ".traveller-grid article",
   ".faq-grid details",
   ".style-grid article",
   ".blog-grid article",
@@ -172,7 +170,7 @@ const revealSelectors = [
   ".image-panel",
 ].join(",");
 
-const scaleRevealSelectors = [".hero-media", ".feature-image", ".about-image"].join(",");
+const scaleRevealSelectors = [".hero-media", ".about-image"].join(",");
 
 const revealObserver =
   "IntersectionObserver" in window
@@ -196,9 +194,9 @@ function prepareRevealItems(scope = document) {
     element.classList.toggle("reveal-scale", scaleItems.includes(element));
     element.classList.toggle("reveal-item", !scaleItems.includes(element));
 
-    if (element.matches(".trust-strip div, .process-grid article, .info-card, .tour-preview, .tour-card, .destination-card, .traveller-grid article, .faq-grid details, .style-grid article, .blog-grid article, .impact-list div, .about-stats div")) {
+    if (element.matches(".trust-strip div, .process-grid article, .info-card, .tour-preview, .tour-card, .destination-card, .faq-grid details, .style-grid article, .blog-grid article, .impact-list div, .about-stats div")) {
       const siblings = Array.from(element.parentElement.children).filter((child) =>
-        child.matches(".trust-strip div, .process-grid article, .info-card, .tour-preview, .tour-card, .destination-card, .traveller-grid article, .faq-grid details, .style-grid article, .blog-grid article, .impact-list div, .about-stats div")
+        child.matches(".trust-strip div, .process-grid article, .info-card, .tour-preview, .tour-card, .destination-card, .faq-grid details, .style-grid article, .blog-grid article, .impact-list div, .about-stats div")
       );
       const delay = Math.min(siblings.indexOf(element), 5);
       if (delay > 0) element.classList.add(`reveal-delay-${delay}`);
