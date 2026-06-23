@@ -754,6 +754,11 @@ textarea {
   margin-top: 28px;
 }
 
+.cta-band .cta-actions .button {
+  width: 190px;
+  justify-content: center;
+}
+
 .tour-grid {
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
