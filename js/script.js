@@ -429,7 +429,6 @@ function createWhatsappChat() {
         <div>
           <span>WhatsApp chat</span>
           <h2 id="whatsapp-chat-title">Local Insights</h2>
-          <p>Usually replies on WhatsApp</p>
         </div>
         <button class="whatsapp-chat-close" type="button" data-whatsapp-close aria-label="Close WhatsApp chat">×</button>
       </div>
