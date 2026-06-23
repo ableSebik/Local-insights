@@ -30,7 +30,7 @@ const tours = [
     duration: "Half day",
     price: "From $70",
     style: "Heritage",
-    image: "images/accra.jpg",
+    image: "images/kwame-nkrumah-refurbished-3.jpg",
     summary: "A focused visit to Ghana's founding story through the mausoleum, museum, monuments, and civic memory.",
     description:
       "A reflective Accra heritage experience centered on Kwame Nkrumah Memorial Park, connecting Ghana's independence story with the museum, mausoleum, public monuments, and nearby national landmarks.",
@@ -152,7 +152,7 @@ const tours = [
     duration: "2 days",
     price: "From $210",
     style: "Short Escape",
-    image: "images/wli-waterfalls.jpg",
+    image: "images/amedzofe-mount-gemi.jpg",
     summary: "A short, scenic break with waterfalls, local food, and easy nature.",
     description:
       "A compact reset for travellers based in Accra or passing through Ghana, focused on fresh air, easy scenery, and local hospitality.",
