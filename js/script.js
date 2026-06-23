@@ -8,7 +8,7 @@ const tours = [
     duration: "1 day",
     price: "From $85",
     style: "Cultural",
-    image: "images/makola-market.jpg",
+    image: "images/chale-wote-festival.jpg",
     summary: "Independence landmarks, markets, art, food stops, and stories from local Accra.",
     description:
       "A grounded introduction to Ghana's capital through independence history, everyday city life, markets, local food, public art, and neighbourhood stories.",
