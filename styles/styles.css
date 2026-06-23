@@ -49,8 +49,12 @@ a {
 .button,
 .filter,
 .text-link,
+.process-grid article,
 .tour-card,
+.tour-preview,
 .destination-card,
+.traveller-grid article,
+.faq-grid details,
 .style-grid article,
 .blog-grid article,
 .impact-list div,
@@ -516,6 +520,56 @@ textarea {
   color: var(--muted);
 }
 
+.process-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 18px;
+  counter-reset: step;
+}
+
+.process-grid article {
+  position: relative;
+  min-height: 260px;
+  padding: 26px;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background:
+    linear-gradient(180deg, rgba(255, 255, 255, 0.98), rgba(238, 244, 240, 0.72));
+  box-shadow: var(--shadow-soft);
+}
+
+.process-grid article:hover,
+.process-grid article:focus-within,
+.tour-preview:hover,
+.tour-preview:focus-within,
+.traveller-grid article:hover,
+.traveller-grid article:focus-within,
+.faq-grid details:hover,
+.faq-grid details:focus-within {
+  border-color: rgba(30, 107, 79, 0.42);
+  transform: translateY(-4px);
+  box-shadow: 0 18px 40px rgba(22, 35, 31, 0.1);
+}
+
+.process-grid span {
+  display: inline-grid;
+  width: 48px;
+  height: 48px;
+  margin-bottom: 42px;
+  place-items: center;
+  border-radius: 50%;
+  color: var(--green-dark);
+  background: var(--gold);
+  font-weight: 900;
+}
+
+.process-grid p,
+.tour-preview p,
+.traveller-grid p,
+.faq-grid p {
+  color: var(--muted);
+}
+
 .two-column {
   display: grid;
   grid-template-columns: 0.9fr 1.1fr;
@@ -613,6 +667,89 @@ textarea {
 .filter.is-active:focus-visible {
   color: white;
   background: var(--green-dark);
+}
+
+.tour-preview-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 18px;
+}
+
+.tour-preview {
+  overflow: hidden;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: var(--surface);
+  box-shadow: var(--shadow-soft);
+}
+
+.tour-preview > div:not(.tour-preview-image) {
+  padding: 22px;
+}
+
+.tour-preview span {
+  display: inline-block;
+  margin-bottom: 10px;
+  color: var(--green);
+  font-size: 0.82rem;
+  font-weight: 900;
+  text-transform: uppercase;
+}
+
+.tour-preview-image {
+  min-height: 220px;
+  background-position: center;
+  background-size: cover;
+  transition: transform 260ms ease;
+}
+
+.tour-preview:hover .tour-preview-image,
+.tour-preview:focus-within .tour-preview-image {
+  transform: scale(1.035);
+}
+
+.accra-preview,
+.food-preview {
+  background-image: url("../images/makola-market.jpg");
+}
+
+.cape-preview {
+  background-image: url("../images/cape-coast-castle.jpg");
+}
+
+.volta-preview {
+  background-image: url("../images/wli-waterfalls.jpg");
+}
+
+.mole-preview {
+  background-image: url("../images/mole-elephant.jpg");
+}
+
+.custom-preview-card {
+  display: grid;
+  align-items: end;
+  color: white;
+  background:
+    linear-gradient(135deg, rgba(18, 66, 50, 0.94), rgba(30, 107, 79, 0.82)),
+    url("../images/elmina-castle.jpg")
+      center / cover;
+}
+
+.custom-preview-card span,
+.custom-preview-card p {
+  color: rgba(255, 255, 255, 0.78);
+}
+
+.custom-preview-card .text-link {
+  color: var(--gold);
+}
+
+.section-actions,
+.cta-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-top: 28px;
 }
 
 .tour-grid {
@@ -899,6 +1036,65 @@ textarea {
 .blog-grid span,
 .impact-list span {
   color: var(--muted);
+}
+
+.traveller-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 16px;
+}
+
+.traveller-grid article {
+  padding: 22px;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: white;
+  box-shadow: var(--shadow-soft);
+}
+
+.responsible-home {
+  display: grid;
+  grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr);
+  gap: clamp(24px, 5vw, 70px);
+  align-items: center;
+  padding: clamp(64px, 8vw, 110px) clamp(18px, 5vw, 72px);
+  background:
+    linear-gradient(90deg, rgba(255, 253, 248, 0.94), rgba(255, 253, 248, 0.78)),
+    url("../images/elmina-castle.jpg")
+      center / cover fixed;
+}
+
+.responsible-home > div:first-child {
+  width: min(700px, 100%);
+}
+
+.responsible-home p:not(.eyebrow) {
+  color: var(--muted);
+  font-size: 1.06rem;
+}
+
+.faq-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 14px;
+}
+
+.faq-grid details {
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: white;
+  box-shadow: var(--shadow-soft);
+}
+
+.faq-grid summary {
+  cursor: pointer;
+  padding: 20px 22px;
+  font-weight: 900;
+}
+
+.faq-grid p {
+  margin: 0;
+  padding: 0 22px 22px;
 }
 
 .responsible {
@@ -1230,12 +1426,16 @@ textarea {
 @media (max-width: 1040px) {
   .tour-grid,
   .style-grid,
-  .content-grid {
+  .content-grid,
+  .process-grid,
+  .tour-preview-grid,
+  .traveller-grid {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 
   .split-section,
   .responsible,
+  .responsible-home,
   .plan-section,
   .about-section,
   .two-column,
@@ -1299,9 +1499,13 @@ textarea {
 
   .trust-strip,
   .tour-grid,
+  .process-grid,
+  .tour-preview-grid,
   .destination-grid,
   .style-grid,
+  .traveller-grid,
   .content-grid,
+  .faq-grid,
   .blog-grid,
   .about-stats,
   .plan-form {
@@ -1336,7 +1540,9 @@ textarea {
   }
 
   .hero-actions,
-  .hero-actions .button {
+  .hero-actions .button,
+  .section-actions .button,
+  .cta-actions .button {
     width: 100%;
   }
 
