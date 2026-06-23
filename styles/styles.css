@@ -703,9 +703,12 @@ textarea {
   transform: scale(1.035);
 }
 
-.accra-preview,
-.food-preview {
+.accra-preview {
   background-image: url("../images/makola-market.jpg");
+}
+
+.food-preview {
+  background-image: url("../images/accra.jpg");
 }
 
 .cape-preview {
