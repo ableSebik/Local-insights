@@ -171,6 +171,8 @@ const grid = document.querySelector("[data-tour-grid]");
 const panel = document.querySelector("[data-tour-panel]");
 const nav = document.querySelector("[data-nav]");
 const menuToggle = document.querySelector("[data-menu-toggle]");
+const whatsappNumber = "233244317183";
+const defaultWhatsappMessage = "Hello Local Insights, I want to plan a Ghana trip.";
 
 const revealSelectors = [
   ".hero-content",
@@ -414,8 +416,90 @@ if (planForm) {
   });
 }
 
+function createWhatsappChat() {
+  if (document.querySelector("[data-whatsapp-chat]")) return;
+
+  const chat = document.createElement("aside");
+  chat.className = "whatsapp-chat";
+  chat.setAttribute("data-whatsapp-chat", "");
+  chat.setAttribute("aria-hidden", "true");
+  chat.innerHTML = `
+    <div class="whatsapp-chat-card" role="dialog" aria-modal="false" aria-labelledby="whatsapp-chat-title">
+      <div class="whatsapp-chat-header">
+        <div>
+          <span>WhatsApp chat</span>
+          <h2 id="whatsapp-chat-title">Local Insights</h2>
+          <p>Usually replies on WhatsApp</p>
+        </div>
+        <button class="whatsapp-chat-close" type="button" data-whatsapp-close aria-label="Close WhatsApp chat">×</button>
+      </div>
+      <div class="whatsapp-chat-body">
+        <div class="chat-bubble incoming">Hi, welcome to Local Insights. What would you like help planning?</div>
+        <button class="chat-prompt" type="button" data-whatsapp-message="Hello Local Insights, I want to plan a Ghana trip.">Plan my Ghana trip</button>
+        <button class="chat-prompt" type="button" data-whatsapp-message="Hello Local Insights, I would like to ask about your Ghana tours.">Ask about tours</button>
+        <button class="chat-prompt" type="button" data-whatsapp-message="Hello Local Insights, I want a custom Ghana travel experience.">Request a custom trip</button>
+      </div>
+      <form class="whatsapp-chat-form" data-whatsapp-form>
+        <input type="text" name="message" aria-label="WhatsApp message" placeholder="Type your message..." />
+        <button type="submit">Send</button>
+      </form>
+    </div>
+  `;
+  document.body.appendChild(chat);
+}
+
+function openWhatsapp(message = defaultWhatsappMessage) {
+  const encoded = encodeURIComponent(message);
+  window.open(`https://wa.me/${whatsappNumber}?text=${encoded}`, "_blank", "noopener");
+}
+
+function openWhatsappChat() {
+  createWhatsappChat();
+  const chat = document.querySelector("[data-whatsapp-chat]");
+  chat.classList.add("is-open");
+  chat.setAttribute("aria-hidden", "false");
+  chat.querySelector('input[name="message"]')?.focus();
+}
+
+function closeWhatsappChat() {
+  const chat = document.querySelector("[data-whatsapp-chat]");
+  if (!chat) return;
+  chat.classList.remove("is-open");
+  chat.setAttribute("aria-hidden", "true");
+}
+
+document.addEventListener("click", (event) => {
+  const whatsappButton = event.target.closest(".whatsapp");
+  const closeWhatsappButton = event.target.closest("[data-whatsapp-close]");
+  const promptButton = event.target.closest("[data-whatsapp-message]");
+
+  if (whatsappButton) {
+    event.preventDefault();
+    openWhatsappChat();
+  }
+
+  if (closeWhatsappButton) closeWhatsappChat();
+
+  if (promptButton) {
+    openWhatsapp(promptButton.dataset.whatsappMessage);
+  }
+});
+
+document.addEventListener("submit", (event) => {
+  const form = event.target.closest("[data-whatsapp-form]");
+  if (!form) return;
+
+  event.preventDefault();
+  const input = form.querySelector('input[name="message"]');
+  const message = input?.value.trim() || defaultWhatsappMessage;
+  openWhatsapp(message);
+});
+
 document.addEventListener("keydown", (event) => {
-  if (event.key === "Escape") closeTour();
+  if (event.key === "Escape") {
+    closeTour();
+    closeWhatsappChat();
+  }
 });
 
 prepareRevealItems();
