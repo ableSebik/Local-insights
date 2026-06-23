@@ -1146,6 +1146,38 @@ textarea {
   color: rgba(255, 255, 255, 0.78);
 }
 
+.contact-details {
+  display: grid;
+  gap: 14px;
+  margin-top: 28px;
+}
+
+.contact-details div {
+  padding: 18px;
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.08);
+}
+
+.contact-details span {
+  display: block;
+  margin-bottom: 8px;
+  color: var(--gold);
+  font-size: 0.8rem;
+  font-weight: 900;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.contact-details p {
+  margin: 0;
+}
+
+.contact-details a {
+  color: white;
+  font-weight: 850;
+}
+
 .plan-form {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
