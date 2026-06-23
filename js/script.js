@@ -22,6 +22,28 @@ const tours = [
     included: "Guide, local transport during the experience, tastings, and entry support.",
   },
   {
+    id: "kwame-nkrumah-memorial-park",
+    title: "Kwame Nkrumah Memorial Park",
+    category: "culture",
+    region: "accra",
+    durationGroup: "1",
+    duration: "Half day",
+    price: "From $70",
+    style: "Heritage",
+    image: "images/accra.jpg",
+    summary: "A focused visit to Ghana's founding story through the mausoleum, museum, monuments, and civic memory.",
+    description:
+      "A reflective Accra heritage experience centered on Kwame Nkrumah Memorial Park, connecting Ghana's independence story with the museum, mausoleum, public monuments, and nearby national landmarks.",
+    highlights: [
+      "Kwame Nkrumah mausoleum visit",
+      "Museum and independence history",
+      "Monument and garden walkthrough",
+      "Optional Black Star Square add-on",
+    ],
+    itinerary: ["Park arrival and orientation", "Museum and mausoleum visit", "Monument walk and reflection stop"],
+    included: "Guide, local transport support, entrance coordination, water, and storytelling.",
+  },
+  {
     id: "cape-coast-heritage",
     title: "Cape Coast Heritage Experience",
     category: "culture",
