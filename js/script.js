@@ -8,7 +8,7 @@ const tours = [
     duration: "1 day",
     price: "From $85",
     style: "Cultural",
-    image: "images/chale-wote-festival.jpg",
+    image: "images/client-accra-independence.jpeg",
     summary: "Independence landmarks, markets, art, food stops, and stories from local Accra.",
     description:
       "A grounded introduction to Ghana's capital through independence history, everyday city life, markets, local food, public art, and neighbourhood stories.",
@@ -30,7 +30,7 @@ const tours = [
     duration: "Half day",
     price: "From $70",
     style: "Heritage",
-    image: "images/kwame-nkrumah-refurbished-3.jpg",
+    image: "images/client-nkrumah-osagyefo.jpeg",
     summary: "A focused visit to Ghana's founding story through the mausoleum, museum, monuments, and civic memory.",
     description:
       "A reflective Accra heritage experience centered on Kwame Nkrumah Memorial Park, connecting Ghana's independence story with the museum, mausoleum, public monuments, and nearby national landmarks.",
@@ -52,7 +52,7 @@ const tours = [
     duration: "2 days",
     price: "From $240",
     style: "Heritage",
-    image: "images/cape-coast-castle.jpg",
+    image: "images/client-cape-coast-door-return.jpeg",
     summary: "A two-day heritage journey through Cape Coast, Kakum, food, and coastal history.",
     description:
       "A thoughtful Central Region experience connecting Ghana's coastal history with local storytelling, food, nature, and reflection.",
@@ -77,7 +77,7 @@ const tours = [
     duration: "3 days",
     price: "From $320",
     style: "Nature",
-    image: "images/wli-waterfalls.jpg",
+    image: "images/client-wli-waterfall.jpeg",
     summary: "Waterfalls, mountain air, village rhythm, and scenic Volta Region roads.",
     description:
       "A nature-forward escape for travellers who want Ghana's waterfalls, calm landscapes, hikes, and community connection.",
@@ -103,7 +103,7 @@ const tours = [
     duration: "1 day",
     price: "From $95",
     style: "Food",
-    image: "images/makola-market.jpg",
+    image: "images/client-food-table.jpeg",
     summary: "Markets, street food, cooking stories, and local flavours across Accra.",
     description:
       "A guided food experience for travellers who want to understand Ghana through markets, ingredients, family recipes, and street-side favourites.",
@@ -152,7 +152,7 @@ const tours = [
     duration: "2 days",
     price: "From $210",
     style: "Short Escape",
-    image: "images/amedzofe-mount-gemi.jpg",
+    image: "images/client-volta-view.jpeg",
     summary: "A short, scenic break with waterfalls, local food, and easy nature.",
     description:
       "A compact reset for travellers based in Accra or passing through Ghana, focused on fresh air, easy scenery, and local hospitality.",

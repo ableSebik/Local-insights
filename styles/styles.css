@@ -456,19 +456,19 @@ textarea {
 }
 
 .hero-tours {
-  background-image: url("../images/kakum.jpg");
+  background-image: url("../images/client-kakum-canopy.jpeg");
 }
 
 .hero-destinations {
-  background-image: url("../images/cape-coast-castle.jpg");
+  background-image: url("../images/client-cape-coast-door-return.jpeg");
 }
 
 .hero-styles {
-  background-image: url("../images/accra.jpg");
+  background-image: url("../images/client-cultural-adinkra.jpeg");
 }
 
 .hero-about {
-  background-image: url("../images/makola-market.jpg");
+  background-image: url("../images/client-hosted-food.jpeg");
 }
 
 .hero-responsible {
@@ -480,7 +480,7 @@ textarea {
 }
 
 .hero-contact {
-  background-image: url("../images/wli-waterfalls.jpg");
+  background-image: url("../images/client-boat-ride.jpeg");
 }
 
 .page-intro {
@@ -581,15 +581,15 @@ textarea {
 }
 
 .image-panel.coast {
-  background-image: url("../images/cape-coast-castle.jpg");
+  background-image: url("../images/client-cape-coast-door-return.jpeg");
 }
 
 .image-panel.market {
-  background-image: url("../images/makola-market.jpg");
+  background-image: url("../images/client-food-table.jpeg");
 }
 
 .image-panel.waterfall {
-  background-image: url("../images/wli-waterfalls.jpg");
+  background-image: url("../images/client-wli-waterfall.jpeg");
 }
 
 .cta-band {
@@ -704,23 +704,23 @@ textarea {
 }
 
 .accra-preview {
-  background-image: url("../images/chale-wote-festival.jpg");
+  background-image: url("../images/client-accra-independence.jpeg");
 }
 
 .nkrumah-preview {
-  background-image: url("../images/kwame-nkrumah-refurbished-3.jpg");
+  background-image: url("../images/client-nkrumah-osagyefo.jpeg");
 }
 
 .food-preview {
-  background-image: url("../images/makola-market.jpg");
+  background-image: url("../images/client-food-table.jpeg");
 }
 
 .cape-preview {
-  background-image: url("../images/cape-coast-castle.jpg");
+  background-image: url("../images/client-cape-coast-door-return.jpeg");
 }
 
 .volta-preview {
-  background-image: url("../images/wli-waterfalls.jpg");
+  background-image: url("../images/client-wli-waterfall.jpeg");
 }
 
 .mole-preview {
@@ -733,7 +733,7 @@ textarea {
   color: white;
   background:
     linear-gradient(135deg, rgba(18, 66, 50, 0.94), rgba(30, 107, 79, 0.82)),
-    url("../images/elmina-castle.jpg")
+    url("../images/client-cultural-adinkra.jpeg")
       center / cover;
 }
 
@@ -965,15 +965,15 @@ textarea {
 }
 
 .accra {
-  background-image: url("../images/accra.jpg");
+  background-image: url("../images/client-accra-independence.jpeg");
 }
 
 .cape {
-  background-image: url("../images/cape-coast-castle.jpg");
+  background-image: url("../images/client-cape-coast-door-return.jpeg");
 }
 
 .volta {
-  background-image: url("../images/wli-waterfalls.jpg");
+  background-image: url("../images/client-wli-waterfall.jpeg");
 }
 
 .north {
