@@ -6,7 +6,6 @@ const tours = [
     region: "accra",
     durationGroup: "1",
     duration: "1 day",
-    price: "From $85",
     style: "Cultural",
     image: "images/client-accra-independence.jpeg",
     summary: "Independence landmarks, markets, art, food stops, and stories from local Accra.",
@@ -28,7 +27,6 @@ const tours = [
     region: "accra",
     durationGroup: "1",
     duration: "Half day",
-    price: "From $70",
     style: "Heritage",
     image: "images/kwame-nkrumah-refurbished-3.jpg",
     summary: "A focused visit to Ghana's founding story through the mausoleum, museum, monuments, and civic memory.",
@@ -50,7 +48,6 @@ const tours = [
     region: "central",
     durationGroup: "2-3",
     duration: "2 days",
-    price: "From $240",
     style: "Heritage",
     image: "images/client-cape-coast-door-return.jpeg",
     summary: "A two-day heritage journey through Cape Coast, Kakum, food, and coastal history.",
@@ -75,7 +72,6 @@ const tours = [
     region: "volta",
     durationGroup: "2-3",
     duration: "3 days",
-    price: "From $320",
     style: "Nature",
     image: "images/wli-waterfalls.jpg",
     summary: "Waterfalls, mountain air, village rhythm, and scenic Volta Region roads.",
@@ -101,7 +97,6 @@ const tours = [
     region: "accra",
     durationGroup: "1",
     duration: "1 day",
-    price: "From $95",
     style: "Food",
     image: "images/client-food-cooking.jpeg",
     summary: "Markets, street food, cooking stories, and local flavours across Accra.",
@@ -123,7 +118,6 @@ const tours = [
     region: "north",
     durationGroup: "4+",
     duration: "5 days",
-    price: "From $690",
     style: "Wildlife",
     image: "images/mole-elephant.jpg",
     summary: "Wildlife, northern culture, craft villages, and ancient landmarks.",
@@ -150,7 +144,6 @@ const tours = [
     region: "volta",
     durationGroup: "2-3",
     duration: "2 days",
-    price: "From $210",
     style: "Short Escape",
     image: "images/amedzofe-mount-gemi.jpg",
     summary: "A short, scenic break with waterfalls, local food, and easy nature.",
@@ -256,7 +249,6 @@ function renderTours(filter = "all") {
             <h3><button class="tour-title-button" type="button" data-tour-link="${tour.id}">${tour.title}</button></h3>
             <p>${tour.summary}</p>
             <div class="card-bottom">
-              <span class="price">${tour.price}</span>
               <button class="text-link" type="button" data-tour-link="${tour.id}">View details</button>
             </div>
           </div>
@@ -276,7 +268,6 @@ function openTour(id) {
   panel.querySelector("[data-detail-region]").textContent = titleCase(tour.region);
   panel.querySelector("[data-detail-title]").textContent = tour.title;
   panel.querySelector("[data-detail-duration]").textContent = tour.duration;
-  panel.querySelector("[data-detail-price]").textContent = tour.price;
   panel.querySelector("[data-detail-style]").textContent = tour.style;
   panel.querySelector("[data-detail-description]").textContent = tour.description;
   panel.querySelector("[data-detail-highlights]").innerHTML = tour.highlights
@@ -301,7 +292,6 @@ Tour details:
 - Duration: ${tour.duration}
 - Region: ${titleCase(tour.region)}
 - Style: ${tour.style}
-- Price: ${tour.price}
 
 Please help me plan this experience.`;
 }
@@ -378,7 +368,6 @@ if (applyFilters) {
                 <h3><button class="tour-title-button" type="button" data-tour-link="${tour.id}">${tour.title}</button></h3>
                 <p>${tour.summary}</p>
                 <div class="card-bottom">
-                  <span class="price">${tour.price}</span>
                   <button class="text-link" type="button" data-tour-link="${tour.id}">View details</button>
                 </div>
               </div>
