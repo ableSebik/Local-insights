@@ -3,43 +3,49 @@ const tours = [
     id: "accra-heritage-walk",
     title: "Accra Heritage Walk",
     category: "culture",
-    region: "accra",
+    region: "greater-accra",
     durationGroup: "1",
-    duration: "1 day",
+    duration: "1 or Half day",
     style: "Cultural",
-    image: "images/client-accra-independence.jpeg",
-    summary: "Independence landmarks, markets, art, food stops, and stories from local Accra.",
+    image: "images/kwame-nkrumah-refurbished-3.jpg",
+    summary: "Independence landmarks, markets, art, and stories from local Accra.",
     description:
-      "A grounded introduction to Ghana's capital through independence history, everyday city life, markets, local food, public art, and neighbourhood stories.",
+      "A grounded introduction to Ghana's capital through independence history, everyday city life, markets, public art, and neighbourhood stories.",
     highlights: [
       "Black Star Square and independence landmarks",
+      "Kwame Nkrumah Memorial Park",
+      "Osu Castle",
+      "Art Center",
       "Makola Market walk-through",
-      "Local food tasting stop",
       "Contemporary art and neighbourhood stories",
     ],
     itinerary: ["Morning heritage route", "Market and food stop", "Afternoon art and local life"],
     included: "Guide, local transport during the experience, tastings, and entry support.",
   },
   {
-    id: "kwame-nkrumah-memorial-park",
-    title: "Kwame Nkrumah Memorial Park",
+    id: "ashanti-cultural-roots",
+    title: "Ashanti Cultural Roots",
     category: "culture",
-    region: "accra",
-    durationGroup: "1",
-    duration: "Half day",
-    style: "Heritage",
-    image: "images/kwame-nkrumah-refurbished-3.jpg",
-    summary: "A focused visit to Ghana's founding story through the mausoleum, museum, monuments, and civic memory.",
+    region: "ashanti",
+    durationGroup: "2-3",
+    duration: "2 days",
+    style: "Culture",
+    image: "images/client-cultural-adinkra.jpeg",
+    summary: "A two-day Ashanti Region journey through Kumasi history, royal memory, naming traditions, kente, and Adinkra craft villages.",
     description:
-      "A reflective Accra heritage experience centered on Kwame Nkrumah Memorial Park, connecting Ghana's independence story with the museum, mausoleum, public monuments, and nearby national landmarks.",
+      "A culture-rich Ashanti Region experience connecting Kumasi heritage with the Okomfo Anokye Sword, traditional naming ceremonies, Bonwire kente weaving, Ntonso Adinkra craft, and local storytelling.",
     highlights: [
-      "Kwame Nkrumah mausoleum visit",
-      "Museum and independence history",
-      "Monument and garden walkthrough",
-      "Optional Black Star Square add-on",
+      "Okomfo Anokye Sword site",
+      "Traditional naming ceremony experience",
+      "Bonwire kente weaving village",
+      "Ntonso Adinkra craft and symbolism",
+      "Kumasi cultural storytelling and local food stops",
     ],
-    itinerary: ["Park arrival and orientation", "Museum and mausoleum visit", "Monument walk and reflection stop"],
-    included: "Guide, local transport support, entrance coordination, water, and storytelling.",
+    itinerary: [
+      "Day 1: Travel to Kumasi, Okomfo Anokye Sword site, cultural orientation, and local food stop",
+      "Day 2: Naming ceremony experience, Bonwire kente, Ntonso Adinkra, and return or onward travel",
+    ],
+    included: "Guide, accommodation, transport support, entrance coordination, selected meals, water, craft-village coordination, and itinerary planning.",
   },
   {
     id: "cape-coast-heritage",
@@ -55,6 +61,7 @@ const tours = [
       "A thoughtful Central Region experience connecting Ghana's coastal history with local storytelling, food, nature, and reflection.",
     highlights: [
       "Cape Coast Castle guided visit",
+      "Elmina Castle visit",
       "Kakum canopy walkway",
       "Local history storytelling",
       "Traditional cuisine and community stop",
@@ -63,22 +70,23 @@ const tours = [
       "Day 1: Accra departure, Cape Coast arrival, castle visit",
       "Day 2: Kakum experience, local lunch, return to Accra",
     ],
-    included: "Transport, guide, entrance fees, selected meals, water, and itinerary support.",
+    included: "Accommodation, transport, guide, entrance fees, selected meals, water, and itinerary support.",
   },
   {
     id: "wli-waterfalls-adventure",
-    title: "Wli Waterfalls Adventure",
+    title: "Volta Nature Adventure",
     category: "adventure",
     region: "volta",
     durationGroup: "2-3",
     duration: "3 days",
     style: "Nature",
     image: "images/wli-waterfalls.jpg",
-    summary: "Waterfalls, mountain air, village rhythm, and scenic Volta Region roads.",
+    summary: "Waterfalls, Tafi Atome Monkey Sanctuary, mountain air, village rhythm, and scenic Volta Region roads.",
     description:
-      "A nature-forward escape for travellers who want Ghana's waterfalls, calm landscapes, hikes, and community connection.",
+      "A nature-forward Volta Region escape for travellers who want waterfalls, wildlife encounters, calm landscapes, hikes, and community connection.",
     highlights: [
       "Wli Falls visit",
+      "Tafi Atome Monkey Sanctuary",
       "Optional Afadjato hiking extension",
       "Village-hosted experience",
       "Scenic Volta road trip",
@@ -88,13 +96,13 @@ const tours = [
       "Day 2: Wli Falls and village experience",
       "Day 3: Slow morning and return",
     ],
-    included: "Transport, guide, accommodation coordination, selected meals, and attraction fees.",
+    included: "Accommodation, transport, guide, selected meals, and attraction fees.",
   },
   {
     id: "ghana-food-discovery",
     title: "Ghana Food Discovery Tour",
     category: "food",
-    region: "accra",
+    region: "greater-accra",
     durationGroup: "1",
     duration: "1 day",
     style: "Food",
@@ -115,7 +123,7 @@ const tours = [
     id: "mole-safari-experience",
     title: "Mole Safari Experience",
     category: "adventure",
-    region: "north",
+    region: "northern",
     durationGroup: "4+",
     duration: "5 days",
     style: "Wildlife",
@@ -135,28 +143,30 @@ const tours = [
       "Day 4: Culture and craft stops",
       "Day 5: Return or onward travel",
     ],
-    included: "Planning support, local guide, transfers, park coordination, and selected meals.",
+    included: "Accommodation, planning support, local guide, transfers, park coordination, and selected meals.",
   },
   {
     id: "weekend-volta-escape",
-    title: "Weekend Volta Escape",
+    title: "Akosombo Weekend Escape",
     category: "escape",
     region: "volta",
     durationGroup: "2-3",
     duration: "2 days",
     style: "Short Escape",
-    image: "images/amedzofe-mount-gemi.jpg",
-    summary: "A short, scenic break with waterfalls, local food, and easy nature.",
+    image: "images/client-boat-ride.jpeg",
+    summary: "A short Akosombo break with Volta Lake time, Adome Bridge views, sporting activities, local food, and easy nature.",
     description:
-      "A compact reset for travellers based in Accra or passing through Ghana, focused on fresh air, easy scenery, and local hospitality.",
+      "A compact Akosombo weekend reset for travellers based in Accra or passing through Ghana, focused on Volta Lake, Adome Bridge, sporting activities, easy scenery, and local hospitality.",
     highlights: [
-      "Waterfall visit",
+      "Boat or jet ski ride on the Volta Lake",
+      "Adome Bridge views",
+      "Sporting activities",
       "Local lunch stop",
       "Scenic photo stops",
       "Flexible private pacing",
     ],
-    itinerary: ["Day 1: Depart Accra and explore", "Day 2: Slow morning and return"],
-    included: "Transport, guide, attraction fees, water, and selected meals.",
+    itinerary: [],
+    included: "Accommodation, transport, guide, attraction fees, water, and selected meals.",
   },
 ];
 
@@ -166,13 +176,32 @@ const nav = document.querySelector("[data-nav]");
 const menuToggle = document.querySelector("[data-menu-toggle]");
 const whatsappNumber = "233244317183";
 const defaultWhatsappMessage = "Hello Local Insights, I want to plan a Ghana trip.";
+const regionLabels = {
+  ahafo: "Ahafo",
+  ashanti: "Ashanti",
+  bono: "Bono",
+  "bono-east": "Bono East",
+  central: "Central",
+  eastern: "Eastern",
+  "greater-accra": "Greater Accra",
+  "north-east": "North East",
+  northern: "Northern",
+  oti: "Oti",
+  savannah: "Savannah",
+  "upper-east": "Upper East",
+  "upper-west": "Upper West",
+  volta: "Volta",
+  western: "Western",
+  "western-north": "Western North",
+};
 
 const revealSelectors = [
   ".hero-content",
   ".page-hero > div",
   ".section-heading",
   ".trip-finder",
-  ".process-grid article",
+  ".nationwide-panel",
+  ".process-flow li",
   ".trust-strip div",
   ".info-card",
   ".tour-preview",
@@ -211,9 +240,9 @@ function prepareRevealItems(scope = document) {
     element.classList.toggle("reveal-scale", scaleItems.includes(element));
     element.classList.toggle("reveal-item", !scaleItems.includes(element));
 
-    if (element.matches(".trust-strip div, .process-grid article, .info-card, .tour-preview, .tour-card, .destination-card, .faq-grid details, .style-grid article, .blog-grid article, .impact-list div, .about-stats div")) {
+    if (element.matches(".trust-strip div, .process-flow li, .info-card, .tour-preview, .tour-card, .destination-card, .faq-grid details, .style-grid article, .blog-grid article, .impact-list div, .about-stats div")) {
       const siblings = Array.from(element.parentElement.children).filter((child) =>
-        child.matches(".trust-strip div, .process-grid article, .info-card, .tour-preview, .tour-card, .destination-card, .faq-grid details, .style-grid article, .blog-grid article, .impact-list div, .about-stats div")
+        child.matches(".trust-strip div, .process-flow li, .info-card, .tour-preview, .tour-card, .destination-card, .faq-grid details, .style-grid article, .blog-grid article, .impact-list div, .about-stats div")
       );
       const delay = Math.min(siblings.indexOf(element), 5);
       if (delay > 0) element.classList.add(`reveal-delay-${delay}`);
@@ -231,6 +260,10 @@ function titleCase(value) {
   return value.replace(/-/g, " ").replace(/\b\w/g, (letter) => letter.toUpperCase());
 }
 
+function regionName(value) {
+  return regionLabels[value] || titleCase(value);
+}
+
 function renderTours(filter = "all") {
   if (!grid) return;
   const filteredTours = tours.filter((tour) => filter === "all" || tour.category === filter);
@@ -244,7 +277,7 @@ function renderTours(filter = "all") {
             <div class="tag-row">
               <span>${titleCase(tour.category)}</span>
               <span>${tour.duration}</span>
-              <span>${titleCase(tour.region)}</span>
+              <span>${regionName(tour.region)}</span>
             </div>
             <h3><button class="tour-title-button" type="button" data-tour-link="${tour.id}">${tour.title}</button></h3>
             <p>${tour.summary}</p>
@@ -265,7 +298,7 @@ function openTour(id) {
   if (!tour || !panel) return;
 
   panel.querySelector("[data-detail-image]").style.backgroundImage = `url('${tour.image}')`;
-  panel.querySelector("[data-detail-region]").textContent = titleCase(tour.region);
+  panel.querySelector("[data-detail-region]").textContent = regionName(tour.region);
   panel.querySelector("[data-detail-title]").textContent = tour.title;
   panel.querySelector("[data-detail-duration]").textContent = tour.duration;
   panel.querySelector("[data-detail-style]").textContent = tour.style;
@@ -273,9 +306,15 @@ function openTour(id) {
   panel.querySelector("[data-detail-highlights]").innerHTML = tour.highlights
     .map((item) => `<li>${item}</li>`)
     .join("");
-  panel.querySelector("[data-detail-itinerary]").innerHTML = tour.itinerary
-    .map((item) => `<li>${item}</li>`)
-    .join("");
+  const itinerarySection = panel.querySelector("[data-detail-itinerary-section]");
+  const itineraryList = panel.querySelector("[data-detail-itinerary]");
+  if (tour.itinerary.length) {
+    itineraryList.innerHTML = tour.itinerary.map((item) => `<li>${item}</li>`).join("");
+    itinerarySection.hidden = false;
+  } else {
+    itineraryList.innerHTML = "";
+    itinerarySection.hidden = true;
+  }
   panel.querySelector("[data-detail-included]").textContent = tour.included;
   const bookLink = panel.querySelector("[data-detail-book]");
   if (bookLink) {
@@ -285,12 +324,32 @@ function openTour(id) {
   panel.setAttribute("aria-hidden", "false");
 }
 
+function openTourFromHash() {
+  if (!grid || !window.location.hash) return;
+  const id = decodeURIComponent(window.location.hash.slice(1));
+  if (!tours.some((tour) => tour.id === id)) return;
+  openTour(id);
+}
+
+function applyRegionFromUrl() {
+  if (!grid || !applyFilters) return;
+
+  const requestedRegion = new URLSearchParams(window.location.search).get("region");
+  const regionAliases = { accra: "greater-accra", north: "northern" };
+  const region = regionAliases[requestedRegion] || requestedRegion;
+  const regionSelect = document.querySelector('[data-filter-select="region"]');
+
+  if (!region || !regionLabels[region] || !regionSelect) return;
+  regionSelect.value = region;
+  applyFilters.click();
+}
+
 function getTourRequestText(tour) {
   return `I am interested in the ${tour.title}.
 
 Tour details:
 - Duration: ${tour.duration}
-- Region: ${titleCase(tour.region)}
+- Region: ${regionName(tour.region)}
 - Style: ${tour.style}
 
 Please help me plan this experience.`;
@@ -363,7 +422,7 @@ if (applyFilters) {
                 <div class="tag-row">
                   <span>${titleCase(tour.category)}</span>
                   <span>${tour.duration}</span>
-                  <span>${titleCase(tour.region)}</span>
+                  <span>${regionName(tour.region)}</span>
                 </div>
                 <h3><button class="tour-title-button" type="button" data-tour-link="${tour.id}">${tour.title}</button></h3>
                 <p>${tour.summary}</p>
@@ -375,7 +434,7 @@ if (applyFilters) {
           `
         )
         .join("")
-    : `<p>No tours match those filters yet. Use the trip planner and Local Insights can create a custom Ghana experience.</p>`;
+    : `<p>No listed tour matches those filters yet. Use the trip planner and Local Insights can create a private Ghana experience across any of the 16 regions.</p>`;
 
     prepareRevealItems(grid);
     document.querySelector("#tours")?.scrollIntoView({ behavior: "smooth", block: "start" });
@@ -497,3 +556,7 @@ document.addEventListener("keydown", (event) => {
 
 prepareRevealItems();
 renderTours();
+applyRegionFromUrl();
+openTourFromHash();
+
+window.addEventListener("hashchange", openTourFromHash);

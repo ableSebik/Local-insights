@@ -50,9 +50,13 @@ a {
 .button,
 .filter,
 .text-link,
-.process-grid article,
+.process-flow li,
+.ghana-map a,
+.region-preview-grid a,
+.region-jump-list a,
 .tour-card,
 .tour-preview,
+.region-guide-card,
 .destination-card,
 .faq-grid details,
 .style-grid article,
@@ -448,7 +452,7 @@ textarea {
 }
 
 .hero-tours {
-  background-image: url("../images/kakum.jpg");
+  background-image: url("../images/elmina-castle.jpg");
 }
 
 .hero-destinations {
@@ -460,7 +464,7 @@ textarea {
 }
 
 .hero-about {
-  background-image: url("../images/client-hosted-food.jpeg");
+  background-image: url("../images/about-hero-ancestral-graveyard.jpeg");
 }
 
 .hero-responsible {
@@ -473,6 +477,10 @@ textarea {
 
 .hero-contact {
   background-image: url("../images/client-boat-ride.jpeg");
+}
+
+.hero-regions {
+  background-image: url("../images/amedzofe-mount-gemi.jpg");
 }
 
 .page-intro {
@@ -507,30 +515,52 @@ textarea {
   box-shadow: 0 18px 40px rgba(22, 35, 31, 0.1);
 }
 
+.static-info-grid .info-card {
+  transition: none;
+}
+
+.static-info-grid .info-card:hover,
+.static-info-grid .info-card:focus-within {
+  border-color: var(--line);
+  transform: none;
+  box-shadow: var(--shadow-soft);
+}
+
 .info-card p {
   color: var(--muted);
 }
 
-.process-grid {
-  display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: 18px;
-  counter-reset: step;
-}
-
-.process-grid article {
+.process-flow {
   position: relative;
-  min-height: 260px;
-  padding: 26px;
-  border: 1px solid var(--line);
-  border-radius: 8px;
-  background:
-    linear-gradient(180deg, rgba(255, 255, 255, 0.98), rgba(238, 244, 240, 0.72));
-  box-shadow: var(--shadow-soft);
+  display: grid;
+  padding: 0;
+  margin: 0;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: clamp(24px, 5vw, 72px);
+  counter-reset: step;
+  list-style: none;
 }
 
-.process-grid article:hover,
-.process-grid article:focus-within,
+.process-flow::before {
+  position: absolute;
+  top: 28px;
+  left: 28px;
+  right: 28px;
+  height: 2px;
+  background: linear-gradient(90deg, rgba(30, 107, 79, 0.22), rgba(243, 196, 79, 0.88), rgba(30, 107, 79, 0.22));
+  content: "";
+}
+
+.process-flow li {
+  position: relative;
+  padding-top: 78px;
+}
+
+.process-flow li:hover,
+.process-flow li:focus-within {
+  transform: translateY(-3px);
+}
+
 .tour-preview:hover,
 .tour-preview:focus-within,
 .faq-grid details:hover,
@@ -540,19 +570,26 @@ textarea {
   box-shadow: 0 18px 40px rgba(22, 35, 31, 0.1);
 }
 
-.process-grid span {
+.process-flow span {
+  position: absolute;
+  top: 0;
+  left: 0;
   display: inline-grid;
-  width: 48px;
-  height: 48px;
-  margin-bottom: 42px;
+  width: 58px;
+  height: 58px;
   place-items: center;
   border-radius: 50%;
   color: var(--green-dark);
   background: var(--gold);
+  box-shadow: 0 0 0 10px var(--paper);
   font-weight: 900;
 }
 
-.process-grid p,
+.process-flow h3 {
+  margin-bottom: 8px;
+}
+
+.process-flow p,
 .tour-preview p,
 .faq-grid p {
   color: var(--muted);
@@ -578,6 +615,10 @@ textarea {
 
 .image-panel.market {
   background-image: url("../images/client-food-cooking.jpeg");
+}
+
+.image-panel.craft {
+  background-image: url("../images/client-cultural-adinkra.jpeg");
 }
 
 .image-panel.waterfall {
@@ -663,11 +704,18 @@ textarea {
 }
 
 .tour-preview {
+  display: block;
   overflow: hidden;
   border: 1px solid var(--line);
   border-radius: 8px;
   background: var(--surface);
   box-shadow: var(--shadow-soft);
+}
+
+.tour-preview:focus-visible,
+.destination-card:focus-visible {
+  outline: 3px solid rgba(243, 196, 79, 0.88);
+  outline-offset: 4px;
 }
 
 .tour-preview > div:not(.tour-preview-image) {
@@ -707,6 +755,10 @@ textarea {
   background-image: url("../images/client-food-cooking.jpeg");
 }
 
+.ashanti-preview {
+  background-image: url("../images/client-cultural-adinkra.jpeg");
+}
+
 .cape-preview {
   background-image: url("../images/client-cape-coast-door-return.jpeg");
 }
@@ -735,6 +787,8 @@ textarea {
 }
 
 .custom-preview-card .text-link {
+  display: inline-block;
+  margin-top: 6px;
   color: var(--gold);
 }
 
@@ -755,6 +809,129 @@ textarea {
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: 18px;
+}
+
+.nationwide-panel {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  gap: clamp(18px, 4vw, 40px);
+  align-items: center;
+  margin-bottom: 28px;
+  padding: clamp(22px, 4vw, 34px);
+  border: 1px solid rgba(30, 107, 79, 0.2);
+  border-radius: 8px;
+  background:
+    linear-gradient(135deg, rgba(238, 244, 240, 0.98), rgba(255, 253, 248, 0.94)),
+    var(--soft);
+  box-shadow: var(--shadow-soft);
+}
+
+.nationwide-panel h2 {
+  margin: 0 0 10px;
+  font-size: clamp(1.5rem, 3vw, 2.15rem);
+}
+
+.nationwide-panel p:last-child {
+  margin-bottom: 0;
+  color: var(--muted);
+}
+
+.region-preview-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 12px;
+  margin-bottom: 26px;
+}
+
+.region-preview-grid a {
+  display: block;
+  min-height: 142px;
+  padding: 18px;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: white;
+  box-shadow: var(--shadow-soft);
+}
+
+.region-preview-grid a:hover,
+.region-preview-grid a:focus-visible,
+.region-guide-card:hover,
+.region-guide-card:focus-within,
+.region-jump-list a:hover,
+.region-jump-list a:focus-visible {
+  border-color: rgba(30, 107, 79, 0.42);
+  transform: translateY(-3px);
+  box-shadow: 0 18px 40px rgba(22, 35, 31, 0.1);
+}
+
+.region-preview-grid span {
+  display: block;
+  margin-bottom: 8px;
+  color: var(--green-dark);
+  font-size: 1.02rem;
+  font-weight: 900;
+}
+
+.region-preview-grid p {
+  margin-bottom: 0;
+  color: var(--muted);
+  font-size: 0.94rem;
+}
+
+.region-guide-actions {
+  margin-bottom: 30px;
+}
+
+.region-jump-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.region-jump-list a {
+  padding: 10px 13px;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: white;
+  color: var(--green-dark);
+  font-weight: 850;
+}
+
+.regional-guide-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 18px;
+}
+
+.region-guide-card {
+  scroll-margin-top: 98px;
+  padding: clamp(22px, 4vw, 32px);
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background:
+    linear-gradient(180deg, rgba(255, 255, 255, 0.99), rgba(255, 253, 248, 0.95));
+  box-shadow: var(--shadow-soft);
+}
+
+.region-guide-card h2 {
+  margin-bottom: 12px;
+  font-size: clamp(1.7rem, 3vw, 2.6rem);
+}
+
+.region-guide-card h3 {
+  margin-top: 20px;
+}
+
+.region-guide-card ul {
+  display: grid;
+  gap: 8px;
+  padding-left: 19px;
+  margin: 0;
+  color: var(--muted);
+}
+
+.region-brief {
+  color: var(--muted);
 }
 
 .tour-card {
@@ -886,6 +1063,152 @@ textarea {
   display: grid;
   grid-template-columns: 0.7fr 1.3fr;
   gap: clamp(24px, 5vw, 70px);
+}
+
+.ghana-map-layout {
+  display: grid;
+  gap: 16px;
+  align-items: start;
+}
+
+.ghana-map {
+  display: block;
+  width: min(100%, 620px);
+  height: auto;
+  margin-inline: auto;
+}
+
+.ghana-map a {
+  cursor: pointer;
+}
+
+.region-fill {
+  fill: #eef4f0;
+  stroke: rgba(38, 39, 32, 0.78);
+  stroke-linejoin: round;
+  stroke-width: 1.2;
+  transition:
+    fill 180ms ease,
+    filter 180ms ease,
+    transform 180ms ease;
+}
+
+.ghana-map a:hover .region-fill,
+.ghana-map a:focus-visible .region-fill {
+  filter: drop-shadow(0 10px 16px rgba(18, 66, 50, 0.22));
+}
+
+.ghana-map a:focus-visible {
+  outline: none;
+}
+
+.ghana-map a:focus-visible .region-fill {
+  stroke: var(--green-dark);
+  stroke-width: 4;
+}
+
+.region-label {
+  pointer-events: none;
+  fill: var(--ink);
+  paint-order: stroke;
+  stroke: rgba(255, 253, 248, 0.78);
+  stroke-width: 3px;
+  stroke-linejoin: round;
+  font-size: 0.64rem;
+  font-weight: 900;
+  text-anchor: middle;
+}
+
+.region-label.dark {
+  fill: var(--ink);
+  stroke: rgba(255, 253, 248, 0.72);
+}
+
+.ghana-map a:hover .tone-upper-west,
+.ghana-map a:focus-visible .tone-upper-west {
+  fill: #d5a046;
+}
+
+.ghana-map a:hover .tone-upper-east,
+.ghana-map a:focus-visible .tone-upper-east {
+  fill: #ef315f;
+}
+
+.ghana-map a:hover .tone-north-east,
+.ghana-map a:focus-visible .tone-north-east {
+  fill: #374a86;
+}
+
+.ghana-map a:hover .tone-northern,
+.ghana-map a:focus-visible .tone-northern {
+  fill: #a8ee81;
+}
+
+.ghana-map a:hover .tone-savannah,
+.ghana-map a:focus-visible .tone-savannah {
+  fill: #187904;
+}
+
+.ghana-map a:hover .tone-oti,
+.ghana-map a:focus-visible .tone-oti {
+  fill: #72519b;
+}
+
+.ghana-map a:hover .tone-bono,
+.ghana-map a:focus-visible .tone-bono {
+  fill: #ff7e83;
+}
+
+.ghana-map a:hover .tone-bono-east,
+.ghana-map a:focus-visible .tone-bono-east {
+  fill: #f35d12;
+}
+
+.ghana-map a:hover .tone-eastern,
+.ghana-map a:focus-visible .tone-eastern {
+  fill: #fb8c34;
+}
+
+.ghana-map a:hover .tone-ahafo,
+.ghana-map a:focus-visible .tone-ahafo {
+  fill: #6ecb4f;
+}
+
+.ghana-map a:hover .tone-ashanti,
+.ghana-map a:focus-visible .tone-ashanti {
+  fill: #ffd641;
+}
+
+.ghana-map a:hover .tone-volta,
+.ghana-map a:focus-visible .tone-volta {
+  fill: #9ddff3;
+}
+
+.ghana-map a:hover .tone-western-north,
+.ghana-map a:focus-visible .tone-western-north {
+  fill: #7b5338;
+}
+
+.ghana-map a:hover .tone-western,
+.ghana-map a:focus-visible .tone-western {
+  fill: #0aa4d6;
+}
+
+.ghana-map a:hover .tone-central,
+.ghana-map a:focus-visible .tone-central {
+  fill: #ec16a9;
+}
+
+.ghana-map a:hover .tone-greater-accra,
+.ghana-map a:focus-visible .tone-greater-accra {
+  fill: #e31919;
+}
+
+.map-caption {
+  max-width: 620px;
+  margin: 0 auto;
+  color: var(--muted);
+  text-align: center;
 }
 
 .destination-grid,
@@ -1097,6 +1420,47 @@ textarea {
   font-weight: 800;
 }
 
+.partner-band {
+  display: grid;
+  grid-template-columns: minmax(0, 0.9fr) minmax(280px, 1.1fr);
+  gap: clamp(22px, 5vw, 64px);
+  align-items: center;
+  padding: clamp(24px, 4vw, 38px);
+  border: 1px solid rgba(30, 107, 79, 0.2);
+  border-radius: 8px;
+  background:
+    linear-gradient(135deg, rgba(238, 244, 240, 0.96), rgba(255, 253, 248, 0.98));
+}
+
+.partner-band h2 {
+  margin-bottom: 12px;
+}
+
+.partner-band p:not(.eyebrow) {
+  max-width: 620px;
+  color: var(--muted);
+}
+
+.partner-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  justify-content: flex-end;
+  padding: 0;
+  margin: 0;
+  list-style: none;
+}
+
+.partner-list li {
+  padding: 12px 16px;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  color: var(--green-dark);
+  background: white;
+  font-weight: 900;
+  box-shadow: 0 8px 18px rgba(22, 35, 31, 0.06);
+}
+
 .impact-list {
   display: grid;
   gap: 12px;
@@ -1244,8 +1608,16 @@ textarea {
   color: var(--muted);
 }
 
-.tour-detail-body ol {
-  padding-left: 22px;
+.tour-detail-body ol,
+.plain-list {
+  color: var(--muted);
+}
+
+.plain-list {
+  display: grid;
+  gap: 8px;
+  padding-left: 0;
+  list-style: none;
 }
 
 .whatsapp {
@@ -1548,8 +1920,8 @@ textarea {
   .tour-grid,
   .style-grid,
   .content-grid,
-  .process-grid,
-  .tour-preview-grid {
+  .tour-preview-grid,
+  .region-preview-grid {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 
@@ -1557,8 +1929,14 @@ textarea {
   .responsible,
   .plan-section,
   .about-section,
+  .nationwide-panel,
+  .partner-band,
   .two-column {
     grid-template-columns: 1fr;
+  }
+
+  .partner-list {
+    justify-content: flex-start;
   }
 
   .about-image {
@@ -1616,9 +1994,10 @@ textarea {
 
   .trust-strip,
   .tour-grid,
-  .process-grid,
   .tour-preview-grid,
   .destination-grid,
+  .region-preview-grid,
+  .regional-guide-grid,
   .style-grid,
   .content-grid,
   .faq-grid,
@@ -1626,6 +2005,31 @@ textarea {
   .about-stats,
   .plan-form {
     grid-template-columns: 1fr;
+  }
+
+  .process-flow {
+    grid-template-columns: 1fr;
+    gap: 26px;
+    padding-left: 58px;
+  }
+
+  .process-flow::before {
+    top: 0;
+    bottom: 0;
+    left: 28px;
+    right: auto;
+    width: 2px;
+    height: auto;
+    background: linear-gradient(180deg, rgba(30, 107, 79, 0.18), rgba(243, 196, 79, 0.88), rgba(30, 107, 79, 0.18));
+  }
+
+  .process-flow li {
+    min-height: 84px;
+    padding-top: 0;
+  }
+
+  .process-flow span {
+    left: -58px;
   }
 
   .cta-band {
