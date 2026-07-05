@@ -3,8 +3,14 @@
 
   RewriteRule ^home2/localins/public_html/?$ / [L,R=301]
   RewriteCond %{DOCUMENT_ROOT}/$1.html -f
-  RewriteRule ^home2/localins/public_html/(.+?)/?$ /$1.html [L,R=301]
+  RewriteRule ^home2/localins/public_html/(.+?)/?$ /$1 [L,R=301]
   RewriteRule ^home2/localins/public_html/(.*)$ /$1 [L,R=301]
+
+  RewriteCond %{THE_REQUEST} \s/+index\.html[?\s]
+  RewriteRule ^index\.html$ / [L,R=301]
+
+  RewriteCond %{THE_REQUEST} \s/+(.+?)\.html[?\s]
+  RewriteRule ^(.+)\.html$ /$1 [L,R=301]
 
   RewriteCond %{HTTPS} !=on
   RewriteRule ^ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]

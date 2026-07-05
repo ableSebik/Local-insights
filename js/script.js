@@ -318,7 +318,7 @@ function openTour(id) {
   panel.querySelector("[data-detail-included]").textContent = tour.included;
   const bookLink = panel.querySelector("[data-detail-book]");
   if (bookLink) {
-    bookLink.href = `contact.html?tour=${encodeURIComponent(tour.id)}`;
+    bookLink.href = `contact?tour=${encodeURIComponent(tour.id)}`;
   }
   panel.classList.add("is-open");
   panel.setAttribute("aria-hidden", "false");
