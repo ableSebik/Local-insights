@@ -1,0 +1,12 @@
+.git
+.agents
+images
+
+*.ico
+*.png
+*.jpg
+*.jpeg
+*.webp
+*.gif
+
+contact-submit.php

@@ -102,21 +102,21 @@ const tours = [
     id: "ghana-food-discovery",
     title: "Ghana Food Discovery Tour",
     category: "food",
-    region: "greater-accra",
-    durationGroup: "1",
-    duration: "1 day",
+    region: "central",
+    durationGroup: "2-3",
+    duration: "2 days",
     style: "Food",
     image: "images/client-food-cooking.jpeg",
-    summary: "Markets, street food, cooking stories, and local flavours across Accra.",
+    summary: "Markets, street food, cooking stories, and coastal flavours around Cape Coast.",
     description:
-      "A guided food experience for travellers who want to understand Ghana through markets, ingredients, family recipes, and street-side favourites.",
+      "A guided Cape Coast food experience for travellers who want to understand Ghana through markets, ingredients, family recipes, coastal flavours, and street-side favourites.",
     highlights: [
       "Guided market visit",
       "Street food tastings",
       "Ingredient and spice storytelling",
-      "Optional cooking add-on",
+      "Cooking of local food.",
     ],
-    itinerary: ["Market orientation", "Tasting route", "Lunch or cooking add-on"],
+    itinerary: ["Day 1: Market orientation, tasting route, and coastal food stories", "Day 2: Cooking session, local lunch, and community food stops"],
     included: "Guide, tastings, water, local transport, and dietary planning support.",
   },
   {
@@ -153,7 +153,7 @@ const tours = [
     durationGroup: "2-3",
     duration: "2 days",
     style: "Short Escape",
-    image: "images/client-boat-ride.jpeg",
+    image: "images/akosombo.jpg",
     summary: "A short Akosombo break with Volta Lake time, Adome Bridge views, sporting activities, local food, and easy nature.",
     description:
       "A compact Akosombo weekend reset for travellers based in Accra or passing through Ghana, focused on Volta Lake, Adome Bridge, sporting activities, easy scenery, and local hospitality.",
@@ -456,11 +456,73 @@ const planForm = document.querySelector(".plan-form");
 if (planForm) {
   prefillTourRequest();
 
-  planForm.addEventListener("submit", (event) => {
+  const startedAt = planForm.querySelector("[data-form-started-at]");
+  const status = planForm.querySelector("[data-form-status]");
+  if (startedAt) startedAt.value = Math.floor(Date.now() / 1000).toString();
+
+  const contactParams = new URLSearchParams(window.location.search);
+  if (status && contactParams.get("sent") === "1") {
+    status.textContent = "Thank you. Your enquiry has been sent to info@localinsightsgh.com.";
+    status.classList.add("is-success");
+  }
+  if (status && contactParams.get("error") === "1") {
+    status.textContent = "Sorry, we could not send your enquiry right now. Please email info@localinsightsgh.com directly.";
+    status.classList.add("is-error");
+  }
+
+  planForm.addEventListener("submit", async (event) => {
     event.preventDefault();
-    const button = event.currentTarget.querySelector("button");
-    button.textContent = "Request Ready to Send";
-    button.style.background = "#1e6b4f";
+    const form = event.currentTarget;
+    const button = form.querySelector("button");
+    const originalText = button.textContent;
+
+    if (status) {
+      status.textContent = "";
+      status.classList.remove("is-success", "is-error");
+    }
+
+    button.disabled = true;
+    button.textContent = "Sending...";
+
+    try {
+      const response = await fetch(form.action, {
+        method: "POST",
+        body: new FormData(form),
+        headers: {
+          Accept: "application/json",
+          "X-Requested-With": "XMLHttpRequest",
+        },
+      });
+      let result = null;
+      try {
+        result = await response.json();
+      } catch (error) {
+        result = {
+          ok: false,
+          message: "Sorry, we could not send your enquiry right now. Please email info@localinsightsgh.com directly.",
+        };
+      }
+
+      if (!response.ok || !result?.ok) {
+        throw new Error(result.message || "Sorry, we could not send your enquiry right now.");
+      }
+
+      form.reset();
+      if (startedAt) startedAt.value = Math.floor(Date.now() / 1000).toString();
+      if (status) {
+        status.textContent = result.message;
+        status.classList.add("is-success");
+      }
+      button.textContent = "Request Sent";
+    } catch (error) {
+      if (status) {
+        status.textContent = error.message || "Sorry, we could not send your enquiry right now. Please email info@localinsightsgh.com directly.";
+        status.classList.add("is-error");
+      }
+      button.textContent = originalText;
+    } finally {
+      button.disabled = false;
+    }
   });
 }
 

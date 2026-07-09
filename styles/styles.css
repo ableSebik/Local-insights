@@ -476,7 +476,7 @@ textarea {
 }
 
 .hero-contact {
-  background-image: url("../images/client-boat-ride.jpeg");
+  background-image: url("../images/kakum-canopy-tour-site.jpg");
 }
 
 .hero-regions {
@@ -765,6 +765,10 @@ textarea {
 
 .volta-preview {
   background-image: url("../images/wli-waterfalls.jpg");
+}
+
+.akosombo-preview {
+  background-image: url("../images/akosombo.jpg");
 }
 
 .mole-preview {
@@ -1543,6 +1547,39 @@ textarea {
   background: white;
   color: var(--ink);
   box-shadow: var(--shadow);
+}
+
+.bot-field {
+  position: absolute;
+  left: -9999px;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+}
+
+.form-status {
+  min-height: 1.5rem;
+  margin: 0;
+  color: var(--muted);
+  font-size: 0.95rem;
+  font-weight: 750;
+}
+
+.form-status:empty {
+  display: none;
+}
+
+.form-status.is-success {
+  color: var(--green-dark);
+}
+
+.form-status.is-error {
+  color: #9d2f25;
+}
+
+.plan-form button:disabled {
+  cursor: wait;
+  opacity: 0.78;
 }
 
 .full {
