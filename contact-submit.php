@@ -131,9 +131,10 @@ $headers = [
     'X-Mailer: PHP/' . phpversion(),
 ];
 
-$sent = mail(CONTACT_RECIPIENT, $subject, $body, implode("\r\n", $headers));
+$sent = mail(CONTACT_RECIPIENT, $subject, $body, implode("\r\n", $headers), '-f' . CONTACT_FROM);
 
 if (!$sent) {
+    error_log('Local Insights contact form mail() failed for recipient ' . CONTACT_RECIPIENT);
     respond(false, 'Sorry, we could not send your enquiry right now. Please email info@localinsightsgh.com directly.', 500);
 }
 
