@@ -61,6 +61,13 @@ function message_value(string $key, int $maxLength = 4000): string
     return $value;
 }
 
+function is_valid_date(string $value): bool
+{
+    $date = DateTimeImmutable::createFromFormat('!Y-m-d', $value);
+
+    return $date !== false && $date->format('Y-m-d') === $value;
+}
+
 if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
     respond(false, 'Please submit the contact form from the contact page.', 405);
 }
@@ -79,16 +86,20 @@ if ($startedAt <= 0 || ($now - $startedAt) < 3 || ($now - $startedAt) > 86400) {
 $name = post_value('name', 120);
 $email = post_value('email', 254);
 $country = post_value('country', 120);
-$dates = post_value('dates', 160);
+$expectedTourDate = post_value('dates', 32);
 $travellers = post_value('travellers', 20);
 $interests = message_value('interests', 4000);
 
 if ($name === '' || $email === '' || $interests === '') {
-    respond(false, 'Please add your name, email address, and trip interests.', 422);
+    respond(false, 'Please add your name, email address, and tell us about your trip.', 422);
 }
 
 if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
     respond(false, 'Please enter a valid email address.', 422);
+}
+
+if ($expectedTourDate !== '' && !is_valid_date($expectedTourDate)) {
+    respond(false, 'Please choose a valid expected tour date.', 422);
 }
 
 if ($travellers !== '' && (!ctype_digit($travellers) || (int) $travellers < 1)) {
@@ -101,11 +112,11 @@ $lines = [
     '',
     'Name: ' . $name,
     'Email: ' . $email,
-    'Country: ' . ($country !== '' ? $country : 'Not provided'),
-    'Travel dates: ' . ($dates !== '' ? $dates : 'Not provided'),
+    'Country of origin: ' . ($country !== '' ? $country : 'Not provided'),
+    'Expected tour date: ' . ($expectedTourDate !== '' ? $expectedTourDate : 'Not provided'),
     'Number of travellers: ' . ($travellers !== '' ? $travellers : 'Not provided'),
     '',
-    'Interests:',
+    'Tell us about your trip:',
     $interests,
     '',
     'Submitted: ' . gmdate('Y-m-d H:i:s') . ' UTC',
