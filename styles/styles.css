@@ -483,22 +483,6 @@ textarea {
   background-image: url("../images/amedzofe-mount-gemi.jpg");
 }
 
-.hero-accra-tours {
-  background-image: url("../images/accra.jpg");
-}
-
-.hero-cape-coast-tours {
-  background-image: url("../images/cape-coast-castle.jpg");
-}
-
-.hero-volta-tours {
-  background-image: url("../images/wli-waterfalls.jpg");
-}
-
-.hero-custom-tours {
-  background-image: url("../images/client-cultural-adinkra.jpeg");
-}
-
 .page-intro {
   width: min(850px, 100%);
   color: var(--muted);
@@ -639,22 +623,6 @@ textarea {
 
 .image-panel.waterfall {
   background-image: url("../images/wli-waterfalls.jpg");
-}
-
-.image-panel.accra-city-panel {
-  background-image: url("../images/client-accra-independence.jpeg");
-}
-
-.image-panel.cape-coast-panel {
-  background-image: url("../images/client-cape-coast-door-return.jpeg");
-}
-
-.image-panel.volta-region-panel {
-  background-image: url("../images/amedzofe-mount-gemi.jpg");
-}
-
-.image-panel.custom-ghana-panel {
-  background-image: url("../images/client-cultural-adinkra.jpeg");
 }
 
 .cta-band {
