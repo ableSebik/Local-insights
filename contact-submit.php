@@ -320,7 +320,6 @@ $lines = [
     $interests,
     '',
     'Submitted: ' . gmdate('Y-m-d H:i:s') . ' UTC',
-    'IP address: ' . ($_SERVER['REMOTE_ADDR'] ?? 'Unknown'),
 ];
 
 $body = implode("\n", $lines);
