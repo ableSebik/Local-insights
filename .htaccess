@@ -1,5 +1,11 @@
+Options -Indexes
+
 <IfModule mod_rewrite.c>
   RewriteEngine On
+
+  RewriteRule ^\.well-known/(?:acme-challenge|pki-validation)/ - [L]
+  RewriteRule (^|/)\. - [F,L]
+  RewriteRule ^localinsights-smtp(?:\.example)?\.php$ - [F,L]
 
   RewriteRule ^home2/localins/public_html/?$ / [L,R=301]
   RewriteCond %{DOCUMENT_ROOT}/$1.html -f
@@ -21,6 +27,7 @@
 </IfModule>
 
 <IfModule mod_headers.c>
+  Header always unset X-Powered-By
   Header always set Strict-Transport-Security "max-age=31536000"
   Header always set X-Content-Type-Options "nosniff"
   Header always set X-Frame-Options "SAMEORIGIN"

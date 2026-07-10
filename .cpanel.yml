@@ -4,3 +4,4 @@ deployment:
     - export DEPLOYPATH=$HOME/public_html/
     - /bin/cp -R * $DEPLOYPATH
     - /bin/cp -f .htaccess $DEPLOYPATH
+    - /bin/rm -f $DEPLOYPATH/localinsights-smtp.php $DEPLOYPATH/localinsights-smtp.example.php

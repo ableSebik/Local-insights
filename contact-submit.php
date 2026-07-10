@@ -5,6 +5,9 @@ const CONTACT_RECIPIENT = 'info@localinsightsgh.com';
 const CONTACT_FROM = 'no-reply@localinsightsgh.com';
 const CONTACT_FROM_NAME = 'Local Insights Ghana';
 
+header_remove('X-Powered-By');
+header('X-Robots-Tag: noindex, nofollow, noarchive');
+
 function wants_json(): bool
 {
     $accept = $_SERVER['HTTP_ACCEPT'] ?? '';
@@ -25,6 +28,22 @@ function respond(bool $ok, string $message, int $statusCode = 200): void
 
     $query = $ok ? 'sent=1' : 'error=1';
     header('Location: contact?' . $query);
+    exit;
+}
+
+function reject_method(): void
+{
+    http_response_code(405);
+    header('Allow: POST');
+
+    if (wants_json()) {
+        header('Content-Type: application/json; charset=UTF-8');
+        echo json_encode(['ok' => false, 'message' => 'Please submit the contact form from the contact page.']);
+        exit;
+    }
+
+    header('Content-Type: text/plain; charset=UTF-8');
+    echo 'Please submit the contact form from the contact page.';
     exit;
 }
 
@@ -89,7 +108,6 @@ function smtp_config(): ?array
 
     $paths = [
         dirname(__DIR__) . DIRECTORY_SEPARATOR . 'localinsights-smtp.php',
-        __DIR__ . DIRECTORY_SEPARATOR . 'localinsights-smtp.php',
     ];
 
     foreach ($paths as $path) {
@@ -244,14 +262,14 @@ function send_contact_message(string $to, string $subject, string $body, string 
         'From: ' . CONTACT_FROM_NAME . ' <' . CONTACT_FROM . '>',
         'Reply-To: ' . $replyToName . ' <' . $replyToEmail . '>',
         'Content-Type: text/plain; charset=UTF-8',
-        'X-Mailer: PHP/' . phpversion(),
+        'X-Mailer: Local Insights Ghana',
     ];
 
     return mail($to, $subject, $body, implode("\r\n", $headers), '-f' . CONTACT_FROM);
 }
 
 if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
-    respond(false, 'Please submit the contact form from the contact page.', 405);
+    reject_method();
 }
 
 $honeypot = post_value('website', 255);
