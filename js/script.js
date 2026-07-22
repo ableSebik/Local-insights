@@ -5,18 +5,22 @@ const tours = [
     category: "culture",
     region: "greater-accra",
     durationGroup: "1",
-    duration: "1 or Half day",
+    duration: "1 day",
     style: "Cultural",
     image: "images/kwame-nkrumah-refurbished-3.jpg",
-    summary: "Independence landmarks, markets, art, and stories from local Accra.",
+    summary:
+      "A grounded introduction to Ghana's capital through independence history, everyday city life, markets, public art, and neighbourhood stories.",
     description:
       "A grounded introduction to Ghana's capital through independence history, everyday city life, markets, public art, and neighbourhood stories.",
     highlights: [
       "Black Star Square and independence landmarks",
       "Kwame Nkrumah Memorial Park",
+      "National Museum",
       "Osu Castle",
-      "Art Center",
-      "Makola Market walk-through",
+      "Arts Center",
+      "WEB DuBois Centre",
+      "Fantasy Coffin Workshop",
+      "Makola Market walkthrough",
       "Contemporary art and neighbourhood stories",
     ],
     itinerary: ["Morning heritage route", "Market and food stop", "Afternoon art and local life"],
@@ -27,25 +31,29 @@ const tours = [
     title: "Ashanti Cultural Roots",
     category: "culture",
     region: "ashanti",
-    durationGroup: "2-3",
-    duration: "2 days",
+    durationGroup: "4+",
+    duration: "4 days",
     style: "Culture",
     image: "images/client-cultural-adinkra.jpeg",
-    summary: "A two-day Ashanti Region journey through Kumasi history, royal memory, naming traditions, kente, and Adinkra craft villages.",
+    summary:
+      "A four-day Ashanti Region journey through Kumasi history, royal memory, naming traditions, kente, and Adinkra craft villages.",
     description:
-      "A culture-rich Ashanti Region experience connecting Kumasi heritage with the Okomfo Anokye Sword, traditional naming ceremonies, Bonwire kente weaving, Ntonso Adinkra craft, and local storytelling.",
+      "A culture-rich Ashanti Region experience connecting Kumasi heritage with the Okomfo Anokye Sword, traditional naming ceremonies, Kente weaving, Ntonso Adinkra craft, and local storytelling.",
     highlights: [
       "Okomfo Anokye Sword site",
       "Traditional naming ceremony experience",
-      "Bonwire kente weaving village",
+      "Kente weaving village",
       "Ntonso Adinkra craft and symbolism",
-      "Kumasi cultural storytelling and local food stops",
+      "Kumasi Cultural Centre and local food stops",
     ],
     itinerary: [
       "Day 1: Travel to Kumasi, Okomfo Anokye Sword site, cultural orientation, and local food stop",
-      "Day 2: Naming ceremony experience, Bonwire kente, Ntonso Adinkra, and return or onward travel",
+      "Day 2: Naming ceremony experience, Kente weaving village, and Ntonso Adinkra weaving",
+      "Day 3: City tour",
+      "Day 4: Return to Accra or onward travel",
     ],
-    included: "Guide, accommodation, transport support, entrance coordination, selected meals, water, craft-village coordination, and itinerary planning.",
+    included:
+      "Guide, accommodation, transport support, entrance coordination, selected meals, water, craft-village coordination, and itinerary planning.",
   },
   {
     id: "cape-coast-heritage",
@@ -116,7 +124,10 @@ const tours = [
       "Ingredient and spice storytelling",
       "Cooking of local food.",
     ],
-    itinerary: ["Day 1: Market orientation, tasting route, and coastal food stories", "Day 2: Cooking session, local lunch, and community food stops"],
+    itinerary: [
+      "Day 1: Market orientation, tasting route, and coastal food stories",
+      "Day 2: Cooking session, local lunch, and community food stops",
+    ],
     included: "Guide, tastings, water, local transport, and dietary planning support.",
   },
   {
@@ -139,9 +150,9 @@ const tours = [
     ],
     itinerary: [
       "Day 1: Travel north",
-      "Days 2-3: Mole safari experiences",
-      "Day 4: Culture and craft stops",
-      "Day 5: Return or onward travel",
+      "Day 2: Mole safari experiences",
+      "Day 3: Culture and craft stops",
+      "Day 4: Return or onward travel",
     ],
     included: "Accommodation, planning support, local guide, transfers, park coordination, and selected meals.",
   },
@@ -154,7 +165,8 @@ const tours = [
     duration: "2 days",
     style: "Short Escape",
     image: "images/akosombo.jpg",
-    summary: "A short Akosombo break with Volta Lake time, Adome Bridge views, sporting activities, local food, and easy nature.",
+    summary:
+      "A short Akosombo break with Volta Lake time, Adome Bridge views, sporting activities, local food, and easy nature.",
     description:
       "A compact Akosombo weekend reset for travellers based in Accra or passing through Ghana, focused on Volta Lake, Adome Bridge, sporting activities, easy scenery, and local hospitality.",
     highlights: [
@@ -174,7 +186,7 @@ const grid = document.querySelector("[data-tour-grid]");
 const panel = document.querySelector("[data-tour-panel]");
 const nav = document.querySelector("[data-nav]");
 const menuToggle = document.querySelector("[data-menu-toggle]");
-const whatsappNumber = "233244317183";
+const whatsappNumber = "233500707227";
 const defaultWhatsappMessage = "Hello Local Insights, I want to plan a Ghana trip.";
 const regionLabels = {
   ahafo: "Ahafo",
@@ -240,9 +252,15 @@ function prepareRevealItems(scope = document) {
     element.classList.toggle("reveal-scale", scaleItems.includes(element));
     element.classList.toggle("reveal-item", !scaleItems.includes(element));
 
-    if (element.matches(".trust-strip div, .process-flow li, .info-card, .tour-preview, .tour-card, .destination-card, .faq-grid details, .style-grid article, .blog-grid article, .impact-list div, .about-stats div")) {
+    if (
+      element.matches(
+        ".trust-strip div, .process-flow li, .info-card, .tour-preview, .tour-card, .destination-card, .faq-grid details, .style-grid article, .blog-grid article, .impact-list div, .about-stats div"
+      )
+    ) {
       const siblings = Array.from(element.parentElement.children).filter((child) =>
-        child.matches(".trust-strip div, .process-flow li, .info-card, .tour-preview, .tour-card, .destination-card, .faq-grid details, .style-grid article, .blog-grid article, .impact-list div, .about-stats div")
+        child.matches(
+          ".trust-strip div, .process-flow li, .info-card, .tour-preview, .tour-card, .destination-card, .faq-grid details, .style-grid article, .blog-grid article, .impact-list div, .about-stats div"
+        )
       );
       const delay = Math.min(siblings.indexOf(element), 5);
       if (delay > 0) element.classList.add(`reveal-delay-${delay}`);
@@ -401,21 +419,21 @@ const applyFilters = document.querySelector("[data-apply-filters]");
 
 if (applyFilters) {
   applyFilters.addEventListener("click", () => {
-  const category = document.querySelector('[data-filter-select="category"]').value;
-  const duration = document.querySelector('[data-filter-select="duration"]').value;
-  const region = document.querySelector('[data-filter-select="region"]').value;
+    const category = document.querySelector('[data-filter-select="category"]').value;
+    const duration = document.querySelector('[data-filter-select="duration"]').value;
+    const region = document.querySelector('[data-filter-select="region"]').value;
 
-  const filteredTours = tours.filter((tour) => {
-    const categoryMatch = category === "all" || tour.category === category;
-    const durationMatch = duration === "all" || tour.durationGroup === duration;
-    const regionMatch = region === "all" || tour.region === region;
-    return categoryMatch && durationMatch && regionMatch;
-  });
+    const filteredTours = tours.filter((tour) => {
+      const categoryMatch = category === "all" || tour.category === category;
+      const durationMatch = duration === "all" || tour.durationGroup === duration;
+      const regionMatch = region === "all" || tour.region === region;
+      return categoryMatch && durationMatch && regionMatch;
+    });
 
-  grid.innerHTML = filteredTours.length
-    ? filteredTours
-        .map(
-          (tour) => `
+    grid.innerHTML = filteredTours.length
+      ? filteredTours
+          .map(
+            (tour) => `
             <article class="tour-card">
               <button class="tour-card-image tour-card-action" type="button" style="background-image:url('${tour.image}')" data-tour-link="${tour.id}" aria-label="View ${tour.title} details"></button>
               <div class="tour-card-body">
@@ -432,9 +450,9 @@ if (applyFilters) {
               </div>
             </article>
           `
-        )
-        .join("")
-    : `<p>No listed tour matches those filters yet. Use the trip planner and Local Insights can create a private Ghana experience across any of the 16 regions.</p>`;
+          )
+          .join("")
+      : `<p>No listed tour matches those filters yet. Use the trip planner and Local Insights can create a private Ghana experience across any of the 16 regions.</p>`;
 
     prepareRevealItems(grid);
     document.querySelector("#tours")?.scrollIntoView({ behavior: "smooth", block: "start" });
@@ -466,7 +484,8 @@ if (planForm) {
     status.classList.add("is-success");
   }
   if (status && contactParams.get("error") === "1") {
-    status.textContent = "Sorry, we could not send your enquiry right now. Please email info@localinsightsgh.com directly.";
+    status.textContent =
+      "Sorry, we could not send your enquiry right now. Please email info@localinsightsgh.com directly.";
     status.classList.add("is-error");
   }
 
@@ -516,7 +535,9 @@ if (planForm) {
       button.textContent = "Request Sent";
     } catch (error) {
       if (status) {
-        status.textContent = error.message || "Sorry, we could not send your enquiry right now. Please email info@localinsightsgh.com directly.";
+        status.textContent =
+          error.message ||
+          "Sorry, we could not send your enquiry right now. Please email info@localinsightsgh.com directly.";
         status.classList.add("is-error");
       }
       button.textContent = originalText;
