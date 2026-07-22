@@ -91,6 +91,7 @@
       <nav class="main-nav" data-nav aria-label="Main navigation">
         <a href="/tours">Tours</a>
         <a href="destinations">Destinations</a>
+        <a href="gallery">Gallery</a>
         <a href="contact">Contact</a>
         <a href="about">About</a>
         <a class="nav-cta" href="contact">Plan Your Trip</a>
@@ -473,6 +474,35 @@
         </div>
       </section>
 
+      <section class="section home-gallery" id="gallery-preview" aria-labelledby="home-gallery-title">
+        <div class="home-gallery-intro">
+          <h2 id="home-gallery-title">A glimpse of Ghana</h2>
+          <p>
+            From heritage landmarks to waterfalls, wildlife, food, and local encounters—see moments from journeys
+            across Ghana.
+          </p>
+          <a class="text-link gallery-link" href="gallery">Explore the full gallery</a>
+        </div>
+        <div class="home-gallery-grid">
+          <figure class="home-gallery-item home-gallery-coast">
+            <img src="images/elmina-castle.jpg" alt="Elmina Castle on Ghana's coast" loading="lazy" />
+            <figcaption>Elmina Castle</figcaption>
+          </figure>
+          <figure class="home-gallery-item">
+            <img src="images/kakum-canopy-tour-site.jpg" alt="Kakum canopy walkway above the rainforest" loading="lazy" />
+            <figcaption>Kakum canopy walkway</figcaption>
+          </figure>
+          <figure class="home-gallery-item">
+            <img src="images/amedzofe-mount-gemi.jpg" alt="Mountain landscape from Mount Gemi" loading="lazy" />
+            <figcaption>Mount Gemi, Amedzofe</figcaption>
+          </figure>
+          <figure class="home-gallery-item">
+            <img src="images/larabanga-mosque.jpg" alt="Historic Larabanga Mosque in Northern Ghana" loading="lazy" />
+            <figcaption>Larabanga Mosque</figcaption>
+          </figure>
+        </div>
+      </section>
+
       <section class="cta-band">
         <div>
           <p class="eyebrow">Ready to plan</p>
@@ -489,6 +519,25 @@
       </section>
     </main>
 
+    <div class="gallery-lightbox" data-gallery-lightbox aria-hidden="true">
+      <div class="gallery-lightbox-backdrop" data-lightbox-close></div>
+      <div class="gallery-lightbox-dialog" role="dialog" aria-modal="true" aria-label="Image preview">
+        <button class="gallery-lightbox-close" type="button" data-lightbox-close aria-label="Close image preview">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 5l14 14M19 5 5 19" /></svg>
+        </button>
+        <button class="gallery-lightbox-control gallery-lightbox-previous" type="button" data-lightbox-previous aria-label="Previous image">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m15 5-7 7 7 7" /></svg>
+        </button>
+        <figure>
+          <img data-lightbox-image alt="" />
+          <figcaption><span data-lightbox-caption></span><span data-lightbox-count></span></figcaption>
+        </figure>
+        <button class="gallery-lightbox-control gallery-lightbox-next" type="button" data-lightbox-next aria-label="Next image">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m9 5 7 7-7 7" /></svg>
+        </button>
+      </div>
+    </div>
+
     <a
       class="whatsapp"
       href="https://wa.me/233500707227?text=Hello%20Local%20Insights%2C%20I%20want%20to%20plan%20a%20Ghana%20trip"
@@ -502,7 +551,7 @@
         <p>authentic experiences, lasting memories</p>
       </div>
       <nav aria-label="Footer navigation">
-        <a href="tours">Tours</a><a href="destinations">Destinations</a><a href="about">About</a
+        <a href="tours">Tours</a><a href="destinations">Destinations</a><a href="gallery">Gallery</a><a href="about">About</a
         ><a href="contact">Contact</a>
       </nav>
     </footer>

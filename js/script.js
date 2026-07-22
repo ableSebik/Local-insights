@@ -188,6 +188,12 @@ const nav = document.querySelector("[data-nav]");
 const menuToggle = document.querySelector("[data-menu-toggle]");
 const whatsappNumber = "233500707227";
 const defaultWhatsappMessage = "Hello Local Insights, I want to plan a Ghana trip.";
+const galleryLightbox = document.querySelector("[data-gallery-lightbox]");
+const galleryImages = Array.from(
+  document.querySelectorAll(".gallery-page .gallery-item img, .home-gallery .home-gallery-item img")
+);
+let activeGalleryImage = 0;
+let galleryReturnFocus = null;
 const regionLabels = {
   ahafo: "Ahafo",
   ashanti: "Ashanti",
@@ -226,6 +232,10 @@ const revealSelectors = [
   ".about-stats div",
   ".plan-form",
   ".image-panel",
+  ".gallery-location-heading",
+  ".gallery-item",
+  ".home-gallery-intro",
+  ".home-gallery-item",
 ].join(",");
 
 const scaleRevealSelectors = [".hero-media", ".about-image"].join(",");
@@ -395,6 +405,62 @@ function closeTour() {
   panel.classList.remove("is-open");
   panel.setAttribute("aria-hidden", "true");
 }
+
+function renderGalleryLightbox() {
+  if (!galleryLightbox || !galleryImages.length) return;
+  const sourceImage = galleryImages[activeGalleryImage];
+  const caption = sourceImage.closest("figure")?.querySelector("figcaption")?.textContent.trim() || sourceImage.alt;
+  const previewImage = galleryLightbox.querySelector("[data-lightbox-image]");
+  previewImage.src = sourceImage.currentSrc || sourceImage.src;
+  previewImage.alt = sourceImage.alt;
+  galleryLightbox.querySelector("[data-lightbox-caption]").textContent = caption;
+  galleryLightbox.querySelector("[data-lightbox-count]").textContent = `${activeGalleryImage + 1} / ${galleryImages.length}`;
+}
+
+function openGalleryLightbox(index) {
+  if (!galleryLightbox || !galleryImages[index]) return;
+  activeGalleryImage = index;
+  galleryReturnFocus = document.activeElement;
+  renderGalleryLightbox();
+  galleryLightbox.classList.add("is-open");
+  galleryLightbox.setAttribute("aria-hidden", "false");
+  document.body.style.overflow = "hidden";
+  galleryLightbox.querySelector("button[data-lightbox-close]").focus();
+}
+
+function closeGalleryLightbox() {
+  if (!galleryLightbox?.classList.contains("is-open")) return;
+  galleryLightbox.classList.remove("is-open");
+  galleryLightbox.setAttribute("aria-hidden", "true");
+  document.body.style.overflow = "";
+  galleryReturnFocus?.focus();
+}
+
+function stepGalleryLightbox(direction) {
+  if (!galleryImages.length) return;
+  activeGalleryImage = (activeGalleryImage + direction + galleryImages.length) % galleryImages.length;
+  renderGalleryLightbox();
+}
+
+galleryImages.forEach((image, index) => {
+  const figure = image.closest("figure");
+  if (!figure) return;
+  figure.setAttribute("role", "button");
+  figure.setAttribute("tabindex", "0");
+  figure.setAttribute("aria-label", `Preview ${figure.querySelector("figcaption")?.textContent.trim() || image.alt}`);
+  figure.addEventListener("click", () => openGalleryLightbox(index));
+  figure.addEventListener("keydown", (event) => {
+    if (event.key !== "Enter" && event.key !== " ") return;
+    event.preventDefault();
+    openGalleryLightbox(index);
+  });
+});
+
+galleryLightbox?.addEventListener("click", (event) => {
+  if (event.target.closest("[data-lightbox-close]")) closeGalleryLightbox();
+  if (event.target.closest("[data-lightbox-previous]")) stepGalleryLightbox(-1);
+  if (event.target.closest("[data-lightbox-next]")) stepGalleryLightbox(1);
+});
 
 document.addEventListener("click", (event) => {
   const filterButton = event.target.closest("[data-filter]");
@@ -634,7 +700,10 @@ document.addEventListener("keydown", (event) => {
   if (event.key === "Escape") {
     closeTour();
     closeWhatsappChat();
+    closeGalleryLightbox();
   }
+  if (galleryLightbox?.classList.contains("is-open") && event.key === "ArrowLeft") stepGalleryLightbox(-1);
+  if (galleryLightbox?.classList.contains("is-open") && event.key === "ArrowRight") stepGalleryLightbox(1);
 });
 
 prepareRevealItems();
